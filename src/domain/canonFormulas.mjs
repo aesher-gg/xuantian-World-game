@@ -11,10 +11,10 @@ export function passiveQiRegenPerHour({ qiCap: cap, root: rootId, environmentQiM
   const r = root(rootId)
   if (!r) throw new RangeError('Unknown spiritual root: ' + rootId)
   if (environmentQiModifier < 0 || pillToxinPercent < 0 || pillToxinPercent > 1) throw new RangeError('Invalid Qi regeneration modifier')
-  return cap * 0.05 * r.qiRegenMultiplier * environmentQiModifier * (1 - pillToxinPercent)
+  return cap * rules.cultivation.qiRegen.baseRate * r.qiRegenMultiplier * environmentQiModifier * (1 - pillToxinPercent)
 }
 export function meditationQiPerMinute({ qiCap: cap, comprehensionLevel, spiritStoneGatheringBonus }) {
-  return cap * 0.02 * (1 + comprehensionLevel * 0.1) * spiritStoneGatheringBonus
+  return cap * rules.cultivation.meditation.baseRate * (1 + comprehensionLevel * rules.cultivation.meditation.comprehensionBonusPerLevel) * spiritStoneGatheringBonus
 }
 export function actualGrowthDays({ baseGrowthDays, soilGrade, fertilized, woodRoot }) {
   const soil = catalog.professions.find((p) => p.id === 'herb-farming').soilGrowthMultiplier['grade' + soilGrade]
@@ -53,16 +53,16 @@ export function hpRegenPerHour({ maxHp: hp, root: rootId, environmentQiMultiplie
   return hp * 0.05 * r.qiRegenMultiplier * environmentQiMultiplier
 }
 export function finalHitChance({ attackerRealmIndex, defenderRealmIndex, dodgePenalty, accuracyBonus }) {
-  return clamp(0.7 + (attackerRealmIndex - defenderRealmIndex) * 0.05 - dodgePenalty + accuracyBonus, 0.1, 0.95)
+  return clamp(rules.combat.hitChance.base + (attackerRealmIndex - defenderRealmIndex) * rules.combat.hitChance.realmAdvantagePerRank - dodgePenalty + accuracyBonus, rules.combat.hitChance.min, rules.combat.hitChance.max)
 }
 export function attackPower({ qiCap: cap, rootAttackMultiplier, weaponMultiplier, weaponSoulBindingBonus }) {
-  return cap * 0.15 * rootAttackMultiplier * weaponMultiplier * (1 + weaponSoulBindingBonus)
+  return cap * rules.combat.attack.baseFactor * rootAttackMultiplier * weaponMultiplier * (1 + weaponSoulBindingBonus)
 }
 export function passiveDefense({ qiCap: cap, rootDefenseMultiplier, armorDefenseRating }) {
-  return cap * 0.05 * rootDefenseMultiplier + armorDefenseRating
+  return cap * rules.combat.defense.baseFactor * rootDefenseMultiplier + armorDefenseRating
 }
 export function finalDamage({ attackPower: ap, skillMultiplier, passiveDefense: defense, isCrit }) {
-  return Math.max(1, (ap * skillMultiplier - defense) * (isCrit ? 1.5 : 1))
+  return Math.max(rules.combat.damage.minimum, (ap * skillMultiplier - defense) * (isCrit ? rules.combat.critical.multiplier : 1))
 }
 export function evolutionChance({ currentBloodlinePurityPercent, evolutionPillQualityBonus, hasMatchingElementalCatalyst, currentTier, targetTier }) {
   return clamp(0.4 + currentBloodlinePurityPercent * 0.3 + evolutionPillQualityBonus + (hasMatchingElementalCatalyst ? 0.15 : 0) - (targetTier - currentTier) * 0.25, 0.05, 0.9)
@@ -72,14 +72,14 @@ export function satietyDropPerHour({ fastingMultiplier }) {
   return 0.1 / fastingMultiplier
 }
 export function criticalChance({ attackerDexterity, windMetalRoot }) {
-  return 0.05 + attackerDexterity * 0.005 + (windMetalRoot ? 0.05 : 0)
+  return rules.combat.critical.base + attackerDexterity * rules.combat.critical.dexterityFactor + (windMetalRoot ? rules.combat.rootMultipliers.criticalChanceBonus['wind-metal'] : 0)
 }
 export function beastDropChance({ baseRarityRate, tierModifier, carcassDamagePercent }) {
   return baseRarityRate * tierModifier - carcassDamagePercent * 0.1
 }
 export function initiativeScore({ realmIndex, stageBonus, rootSpeedBonus, equipmentSpeedBonus, randomRoll }) {
   if (!Number.isInteger(randomRoll) || randomRoll < 1 || randomRoll > 20) throw new RangeError('Initiative random roll must be 1..20')
-  return realmIndex * 100 + stageBonus + rootSpeedBonus + equipmentSpeedBonus + randomRoll
+  return realmIndex * rules.combat.initiative.realmIndexMultiplier + stageBonus + rootSpeedBonus + equipmentSpeedBonus + randomRoll
 }
 
 
@@ -136,7 +136,7 @@ export function combatRootMultipliers(rootId) {
   return {
     attack,
     defense,
-    criticalChanceBonus: rules.combat.rootMultipliers.criticalChanceBonus[rootId] ?? rules.combat.rootMultipliers.rootMultipliers?.default ?? 0,
+    criticalChanceBonus: rules.combat.rootMultipliers.criticalChanceBonus[rootId] ?? rules.combat.rootMultipliers.criticalChanceBonus.default,
     source: rules.combat.rootMultipliers.source,
     conflicts: rules.sourceConflicts.filter((item) => item.affectedSystem.startsWith('combat.')),
   }
