@@ -4,7 +4,7 @@ import rules from '../../world-bible/generated/simulation-rules.json' with { typ
 import domain from '../../world-bible/generated/domain-catalog.json' with { type: 'json' }
 import {
   qiCap, maxHp, canonicalAttackPower, canonicalPassiveDefense,
-  canonicalInitiativeScore, fastingMultiplierForRealm, satietyDropForRealm,
+  canonicalInitiativeScore, canonicalCriticalChance, fastingMultiplierForRealm, satietyDropForRealm,
   finalBuyPrice, toxinStatus, accumulatePillToxin, naturalToxinCleansing,
   formulaSource, evaluateWithSource, weaponMultiplierForTier,
 } from './canonFormulas.mjs'
@@ -32,6 +32,7 @@ test('cultivation and vitality formulas use official Qi caps and explicit formul
 test('combat root multipliers are read from combat module table', () => {
   assert.equal(canonicalAttackPower({ qiCap: 100, root: 'fire', weaponTier: 1 }), 23.1)
   assert.equal(canonicalPassiveDefense({ qiCap: 100, root: 'earth', armorDefenseRating: 0 }), 7.5)
+  assert.equal(canonicalCriticalChance({ attackerDexterity: 10, root: 'wind-metal' }), 0.15)
   assert.throws(() => weaponMultiplierForTier(5), /provide its exact official item multiplier/)
 })
 
@@ -66,4 +67,7 @@ test('formula evaluations include immutable source provenance', () => {
   const result = evaluateWithSource('maxHp', { realmBaseQiCap: 100, stage: 'middle', root: 'wood', bodyFortificationBonus: 0 })
   assert.equal(result.value, 90)
   assert.equal(result.source.path, '19_VITALITY_HUNGER_SYSTEM.md')
+  const qi = evaluateWithSource('qiCap', { realmIndex: 1, stage: 'middle' })
+  assert.equal(qi.value, 150)
+  assert.equal(qi.source.path, '13_SPIRITUAL_ROOT_SYSTEM.md')
 })
