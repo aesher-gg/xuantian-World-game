@@ -24,10 +24,18 @@ export interface WorldState {
   eventLog: string[]
 }
 export interface HerbPlot {
+  herbId: string
   name: string
   plantedAtMinute: number | null
   growthMinutes: number
   requiredMinutes: number
+  baseGrowthDays: number
+  soilGrade: 1 | 2 | 3 | 4
+  fertilized: boolean
+  woodRoot: boolean
+  baseYield: number
+  baseYieldMax: number
+  herbalistSkillLevel: number
   yield: number
 }
 export interface Npc {
@@ -43,5 +51,6 @@ export interface GameSnapshot {
   player: PlayerState
   world: WorldState
   herb: HerbPlot
+  herbInventory: Record<string, number>
   npcs: Npc[]
 }
