@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto'
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 export const SOURCE_REPOSITORY = 'aesher-gg/Xuantian-World'
@@ -66,6 +66,85 @@ export function validateCatalog(catalog) {
 async function getText(url) { const response = await fetch(url, { headers: { 'User-Agent': 'Xuantian-World-Importer/1.0' } }); if (!response.ok) throw new Error('HTTP ' + response.status + ' fetching ' + url); return response.text() }
 async function getJson(url) { const response = await fetch(url, { headers: { 'User-Agent': 'Xuantian-World-Importer/1.0', Accept: 'application/vnd.github+json' } }); if (!response.ok) throw new Error('HTTP ' + response.status + ' fetching ' + url); return response.json() }
 async function parallel(items, limit, fn) { const results = new Array(items.length); let cursor = 0; await Promise.all(Array.from({ length: Math.min(limit, items.length) }, async () => { while (cursor < items.length) { const i = cursor++; results[i] = await fn(items[i], i) } })); return results }
+
+const normalizeHeader = (value) => value.replace(/<br\\s*\\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\\*\\*/g, '').replace(/\\*/g, '').trim()
+function tableRecords(module, requiredHeaders) {
+  const records = []
+  for (const table of module?.tables ?? []) {
+    const headers = table.headers.map(normalizeHeader)
+    if (!requiredHeaders.every((required) => headers.some((header) => header.includes(required)))) continue
+    const section = [...(module.sections ?? [])].filter((item) => item.line <= table.startLine).sort((a, b) => b.line - a.line)[0]
+    for (const row of table.rows) {
+      records.push({
+        source: module.path,
+        sourceBlobSha: module.blobSha,
+        sourceLine: table.startLine,
+        section: section?.title ?? null,
+        fields: Object.fromEntries(headers.map((header, index) => [header || 'column_' + index, row[index] ?? '']))
+      })
+    }
+  }
+  return records
+}
+export function buildDomainCatalog(seed, catalog) {
+  const byPath = new Map(catalog.modules.map((module) => [module.path, module]))
+  const herbModule = byPath.get('15_SPIRITUAL_HERB_FARMING_SYSTEM.md')
+  const beastModule = byPath.get('21_BESTIARY.md')
+  const herbCatalog = tableRecords(herbModule, ['Nama Tanaman', 'Standar Waktu Tumbuh'])
+  const beastCatalog = tableRecords(beastModule, ['Nama Beast', 'Loot'])
+  const regionSourceData = seed.regions.map((region) => {
+    const module = byPath.get(region.source[1])
+    return {
+      id: region.id,
+      source: region.source[1],
+      sourceBlobSha: module?.blobSha ?? null,
+      title: module?.title ?? region.name,
+      headings: module?.headings ?? [],
+      tables: module?.tables ?? [],
+      sections: module?.sections ?? []
+    }
+  })
+  const formulaRegistry = []
+  for (const module of catalog.modules) {
+    if (!/13_SPIRITUAL_ROOT|14_CRAFTING|15_SPIRITUAL_HERB|16_BEAST|17_AIRSHIP|18_ECONOMY|19_VITALITY|20_COMBAT/.test(module.path)) continue
+    for (const block of module.codeBlocks ?? []) {
+      formulaRegistry.push({ source: module.path, sourceBlobSha: module.blobSha, startLine: block.startLine, expression: block.content })
+    }
+    for (const section of module.sections ?? []) {
+      for (const line of section.content.split(/\\r?\\n/)) {
+        if (/^[A-Za-z][A-Za-z0-9_]*(?:\\([^)]*\\))?\\s*=/.test(line.trim())) {
+          formulaRegistry.push({ source: module.path, sourceBlobSha: module.blobSha, startLine: section.line, section: section.title, expression: line.trim() })
+        }
+      }
+    }
+  }
+  return {
+    ...seed,
+    status: 'source-synced-domain-extract',
+    source: { ...seed.source, commitSha: catalog.source.commitSha, importedAt: catalog.source.importedAt },
+    coverage: {
+      regionCount: regionSourceData.length,
+      realmCount: seed.cultivation.realms.length,
+      spiritualRootCount: seed.cultivation.spiritualRoots.length,
+      professionCount: seed.professions.length,
+      herbCount: herbCatalog.length,
+      expectedHerbCount: 200,
+      herbCatalogComplete: herbCatalog.length >= 200,
+      beastRecordCount: beastCatalog.length,
+      formulaCount: formulaRegistry.length
+    },
+    regionSourceData,
+    herbCatalog,
+    beastCatalog,
+    economyTables: byPath.get('18_ECONOMY_SYSTEM.md')?.tables ?? [],
+    formulaRegistry,
+    completenessWarnings: [
+      ...(herbCatalog.length < 200 ? ['Herb tables currently expose ' + herbCatalog.length + ' rows; source index describes a 200-plant catalog.'] : []),
+      ...(beastCatalog.length === 0 ? ['No bestiary species tables were recognized; inspect source table headers.'] : [])
+    ]
+  }
+}
+
 export async function runImport() {
   const base = 'https://api.github.com/repos/' + SOURCE_REPOSITORY
   const index = await getText('https://raw.githubusercontent.com/' + SOURCE_REPOSITORY + '/' + SOURCE_BRANCH + '/INDEX.md')
@@ -90,6 +169,8 @@ export async function runImport() {
     modules: imported.map((x) => ({ id: x.entry.id, moduleLabel: x.entry.moduleLabel, path: x.entry.path, description: x.entry.description, title: x.parsed.title, blobSha: x.blobSha, lineCount: x.parsed.lineCount, headings: x.parsed.headings, sections: x.parsed.sections, tables: x.parsed.tables, codeBlocks: x.parsed.codeBlocks, formulaBlocks: x.parsed.formulaBlocks, references: x.parsed.references }))
   }
   const validation = validateCatalog(catalog)
+  const domainSeed = JSON.parse(await readFile(resolve(GENERATED, 'domain-catalog.json'), 'utf8'))
+  const domainCatalog = buildDomainCatalog(domainSeed, catalog)
   await mkdir(SNAPSHOTS, { recursive: true }); await mkdir(GENERATED, { recursive: true }); await mkdir(PUBLIC_DATA, { recursive: true })
   await writeFile(resolve(SNAPSHOTS, 'INDEX.md'), index, 'utf8')
   for (const item of imported) { const target = resolve(SNAPSHOTS, item.entry.path); await mkdir(dirname(target), { recursive: true }); await writeFile(target, item.markdown, 'utf8') }
@@ -99,6 +180,7 @@ export async function runImport() {
   await writeFile(resolve(PUBLIC_DATA, 'validation-report.json'), JSON.stringify({ ...validation, source: catalog.source, checkedAt: new Date().toISOString() }, null, 2) + '\n', 'utf8')
   if (!validation.valid) throw new Error('Validation failed: ' + validation.errors.join('; '))
   console.log('Imported ' + validation.moduleCount + ' official modules; ' + validation.warnings.length + ' cross-reference warning(s).')
+  console.log('Domain extract: ' + domainCatalog.coverage.regionCount + ' regions, ' + domainCatalog.coverage.herbCount + ' herb rows, ' + domainCatalog.coverage.beastRecordCount + ' beast rows, ' + domainCatalog.coverage.formulaCount + ' formula records.')
   console.log('Source commit: ' + catalog.source.commitSha + '; source policy: read-only.')
   return { catalog, validation }
 }
