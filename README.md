@@ -25,15 +25,15 @@ Xuantian World is a persistent, systemic xianxia world. The player is one cultiv
 ## Current prototype (0.1)
 
 Implemented in this repository:
-- React + TypeScript + Vite browser client
-- Qingling / Shenmu-inspired starting scene and responsive dashboard
-- Player profile, Qi, HP, stamina, hunger and spirit-stone display
-- Deterministic time advancement, cultivation and rest actions
-- Spiritual herb planting, growth and harvest loop
-- Local NPC roster, ambient descriptions and world event journal
-- Local save/load through browser localStorage
+- React + TypeScript + Vite browser client and Qingling starting scene
+- Player state and local save/load
+- World clock and deterministic action progression
+- Cultivation action now calls the official Module 13 meditation formula, with QiCap enforcement
+- Typed, provenance-aware domain catalog for 10 regions, 9 realms, 5 spiritual-root families and 7 profession systems
+- Deterministic formula functions for cultivation, farming, taming, alchemy, airships, economy, vitality and combat
+- Formula tests, source discrepancy notes and CI validation pipeline
 
-Not implemented yet: live LLM provider, generated image provider, full NPC autonomy, all combat/economy/cultivation formula ports, complete World Bible import, and production persistence. The current scene illustration is CSS placeholder art. No AI provider key is required to run this prototype.
+Still pending: first successful full World Bible snapshot sync in CI; automated extraction of all herb/beast rows from the imported modules; formula parity for every sub-system; seeded combat/loot rolls; complete UI integration; NPC autonomy; AI providers; and production persistence. Unspecified modifiers are explicit function inputs, not guessed constants.
 
 ## Architecture
 
@@ -56,16 +56,18 @@ npm run build
 
 The canonical index describes 10 major regions and systems for cultivation, professions, farming, beast taming, airships, economy, vitality, combat, bestiary, factions, events and special items.
 
-The importer is implemented in `scripts/import-world-bible.mjs`. Run `npm run import:world-bible` to fetch the full index, every indexed Markdown module, and the starter-character catalog from the canonical repository. It verifies every download against the Git blob SHA in the source tree, stores immutable copies under `world-bible/snapshots/`, and writes `world-bible/generated/catalog.json` plus `validation-report.json`.
+The importer is implemented in `scripts/import-world-bible.mjs`. Run `npm run import:world-bible` to fetch every module indexed by the canonical `INDEX.md` and the starter-character catalog. It verifies every file against the source Git blob SHA, preserves snapshots under `world-bible/snapshots/`, and writes `catalog.json`, `validation-report.json`, plus `domain-catalog.json` under `world-bible/generated/` and the runtime copy under `public/data/world-bible/`.
 
-The catalog retains provenance, headings, section text, tables, fenced formulas/code blocks and cross-references. Its JSON contract is in `world-bible/schema/catalog.schema.json`; parser/validator tests run with `npm test`. The importer only reads the source repository. It does not silently rewrite contradictions or invent missing mechanics; ambiguous rules remain visible for review. Player saves remain separate from canon.
+The domain extraction retains all official tables for the 200-herb and bestiary catalogs, region source tables, and formula expressions with source paths and SHAs. `src/domain/canonFormulas.mjs` contains deterministic functions for rules already mapped; missing modifiers must be supplied by game state. `npm test` checks importer and formula examples. CI performs the full sync, build, and artifact upload. The source repository is read-only and is never written.
 
 ## Milestones
 
 - [x] Separate game repository and architecture contract.
 - [x] Initial React/TypeScript browser prototype and local deterministic gameplay loop.
-- [ ] M1 — automated build verification and tests for simulation rules.
-- [x] M2 foundation — importer, source-SHA verification, immutable snapshots, JSON catalog schema, validation report and parser tests (full source sync runs with `npm run import:world-bible`).
+- [x] M1 foundation — CI build pipeline and parser/formula unit tests (latest CI run must pass before release).
+- [x] M2 foundation — importer, source-SHA verification, immutable snapshots, JSON catalog schema, validation report and normalized domain extractor.
+- [ ] M2 completion — first successful CI run that stores all source snapshots and complete herb/bestiary extracts.
+- [ ] M3 — finish formula parity, seeded random outcomes and apply every domain formula to gameplay actions.
 - [ ] M3 — persistent NPC schedules, needs, relationships and autonomous legal actions.
 - [ ] M4 — AI dialogue and bounded NPC planning adapters.
 - [ ] M5 — async image generation, asset registry, caching and fallback art.
