@@ -30,5 +30,6 @@ jobs:
           path: |
             world-bible/snapshots/
             world-bible/generated/
+            public/data/world-bible/
           if-no-files-found: error
           retention-days: 30
