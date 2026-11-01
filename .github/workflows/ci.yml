@@ -7,11 +7,16 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   validate-and-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -23,6 +28,14 @@ jobs:
         run: npm run import:world-bible
       - name: Build web game
         run: npm run build
+      - name: Commit verified snapshots and JSON catalog
+        if: github.event_name != 'pull_request'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(world-bible): sync verified canon data [skip ci]"
+          file_pattern: "world-bible/snapshots/** world-bible/generated/** public/data/world-bible/**"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Preserve validated World Bible import
         uses: actions/upload-artifact@v4
         with:
