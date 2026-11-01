@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 0.0.0.0",
     "import:world-bible": "node scripts/import-world-bible.mjs",
-    "test:import": "node --test scripts/import-world-bible.test.mjs",
+    "test:import": "node --test scripts/import-world-bible.test.mjs src/domain/canonFormulas.test.mjs",
     "test": "npm run test:import"
   },
   "dependencies": {
