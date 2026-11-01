@@ -126,7 +126,8 @@ export function evaluateWithSource(name, args) {
   }
   const fn = functions[name]
   if (!fn) throw new RangeError('Unknown canonical formula: ' + name)
-  return { value: fn(args), source: formulaSource(name) }
+  const value = name === 'qiCap' ? fn(args.realmIndex, args.stage) : fn(args)
+  return { value, source: formulaSource(name) }
 }
 
 export function combatRootMultipliers(rootId) {
