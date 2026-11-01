@@ -2,6 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import rules from '../../world-bible/generated/simulation-rules.json' with { type: 'json' }
 import domain from '../../world-bible/generated/domain-catalog.json' with { type: 'json' }
+import { validateOperationalData } from '../../scripts/validate-operational-data.mjs'
 import {
   qiCap, maxHp, canonicalAttackPower, canonicalPassiveDefense,
   canonicalInitiativeScore, canonicalCriticalChance, fastingMultiplierForRealm, satietyDropForRealm,
