@@ -1,4 +1,5 @@
 import type { GameSnapshot } from './types'
+import { meditationQiPerMinute } from './canonFormulas.mjs'
 const MINUTES_PER_DAY = 1440
 const totalMinutes = (s: GameSnapshot) => (s.world.day - 1) * MINUTES_PER_DAY + s.world.hour * 60 + s.world.minute
 
@@ -18,7 +19,7 @@ export function advanceTime(snapshot: GameSnapshot, minutes: number, reason: str
 }
 export function cultivate(snapshot: GameSnapshot): GameSnapshot {
   const next = advanceTime(snapshot, 60, 'Meditasi kultivasi selama satu jam.')
-  const gain = Math.max(1, Math.min(24, Math.floor((next.player.qiCap - next.player.qi) * 0.08 * next.world.woodQi)))
+  const gain = Math.max(0, Math.floor(meditationQiPerMinute({ qiCap: next.player.qiCap, comprehensionLevel: next.player.comprehensionLevel, spiritStoneGatheringBonus: next.player.spiritStoneGatheringBonus }) * 60))
   next.player.qi = Math.min(next.player.qiCap, next.player.qi + gain)
   next.player.cultivationMinutes += 60
   next.world.eventLog.unshift(`Aliran Wood Qi menambah ${gain} Qi.`)
