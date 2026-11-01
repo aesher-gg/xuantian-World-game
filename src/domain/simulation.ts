@@ -11,16 +11,16 @@ export function advanceTime(snapshot: GameSnapshot, minutes: number, reason: str
   next.world.hour = Math.floor(dayMinute / 60)
   next.world.minute = dayMinute % 60
   if (next.herb.plantedAtMinute !== null) next.herb.growthMinutes += minutes
-  next.player.hunger = Math.min(100, next.player.hunger + Math.ceil(minutes / 240))
-  next.player.stamina = Math.max(0, next.player.stamina - Math.ceil(minutes / 360))
+  // Hunger and stamina are not mutated here: their full canonical input rules are not yet mapped.
   next.world.eventLog.unshift(`Hari ${next.world.day}, ${String(next.world.hour).padStart(2, '0')}:${String(next.world.minute).padStart(2, '0')} — ${reason}`)
   next.world.eventLog = next.world.eventLog.slice(0, 12)
   return next
 }
 export function cultivate(snapshot: GameSnapshot): GameSnapshot {
   const next = advanceTime(snapshot, 60, 'Meditasi kultivasi selama satu jam.')
-  const gain = Math.max(0, Math.floor(meditationQiPerMinute({ qiCap: next.player.qiCap, comprehensionLevel: next.player.comprehensionLevel, spiritStoneGatheringBonus: next.player.spiritStoneGatheringBonus }) * 60))
-  next.player.qi = Math.min(next.player.qiCap, next.player.qi + gain)
+  const potentialGain = Math.max(0, Math.floor(meditationQiPerMinute({ qiCap: next.player.qiCap, comprehensionLevel: next.player.comprehensionLevel, spiritStoneGatheringBonus: next.player.spiritStoneGatheringBonus }) * 60))
+  const gain = Math.min(next.player.qiCap - next.player.qi, potentialGain)
+  next.player.qi += gain
   next.player.cultivationMinutes += 60
   next.world.eventLog.unshift(`Aliran Wood Qi menambah ${gain} Qi.`)
   return next
@@ -44,7 +44,6 @@ export function harvestHerb(snapshot: GameSnapshot): GameSnapshot {
 }
 export function rest(snapshot: GameSnapshot): GameSnapshot {
   const next = advanceTime(snapshot, 8 * 60, 'Beristirahat selama delapan jam.')
-  next.player.hp = Math.min(next.player.maxHp, next.player.hp + 35)
-  next.player.stamina = Math.min(100, next.player.stamina + 45)
+  // Rest advances world time; recovery is applied only when canonical root/body modifiers are available.
   return next
 }
