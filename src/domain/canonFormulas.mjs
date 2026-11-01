@@ -1,4 +1,5 @@
 import catalog from '../../world-bible/generated/domain-catalog.json' with { type: 'json' }
+import rules from '../../world-bible/generated/simulation-rules.json' with { type: 'json' }
 const clamp = (n, min, max) => Math.min(max, Math.max(min, n))
 const root = (id) => catalog.cultivation.spiritualRoots.find((r) => r.id === id)
 export function qiCap(realmIndex, stage) {
@@ -79,4 +80,131 @@ export function beastDropChance({ baseRarityRate, tierModifier, carcassDamagePer
 export function initiativeScore({ realmIndex, stageBonus, rootSpeedBonus, equipmentSpeedBonus, randomRoll }) {
   if (!Number.isInteger(randomRoll) || randomRoll < 1 || randomRoll > 20) throw new RangeError('Initiative random roll must be 1..20')
   return realmIndex * 100 + stageBonus + rootSpeedBonus + equipmentSpeedBonus + randomRoll
+}
+
+
+const formulaSources = {
+  qiCap: ['13_SPIRITUAL_ROOT_SYSTEM.md', 49],
+  passiveQiRegenPerHour: ['13_SPIRITUAL_ROOT_SYSTEM.md', 117],
+  meditationQiPerMinute: ['13_SPIRITUAL_ROOT_SYSTEM.md', 126],
+  actualGrowthDays: ['15_SPIRITUAL_HERB_FARMING_SYSTEM.md', 24],
+  harvestYield: ['15_SPIRITUAL_HERB_FARMING_SYSTEM.md', 39],
+  tamingChance: ['16_BEAST_TAMING_SYSTEM.md', 45],
+  evolutionChance: ['16_BEAST_TAMING_SYSTEM.md', 104],
+  pillPurity: ['14_CRAFTING_AND_PROFESSIONS_SYSTEM.md', 46],
+  airshipSpeed: ['17_AIRSHIP_NAVIGATION_SYSTEM.md', 22],
+  buyPrice: ['18_ECONOMY_SYSTEM.md', 51],
+  sellPrice: ['18_ECONOMY_SYSTEM.md', 71],
+  auctionCommission: ['18_ECONOMY_SYSTEM.md', 80],
+  maxHp: ['19_VITALITY_HUNGER_SYSTEM.md', 31],
+  hpRegenPerHour: ['19_VITALITY_HUNGER_SYSTEM.md', 66],
+  satietyDropPerHour: ['19_VITALITY_HUNGER_SYSTEM.md', 79],
+  finalHitChance: ['20_COMBAT_SYSTEM.md', 87],
+  attackPower: ['20_COMBAT_SYSTEM.md', 57],
+  passiveDefense: ['20_COMBAT_SYSTEM.md', 74],
+  finalDamage: ['20_COMBAT_SYSTEM.md', 97],
+  criticalChance: ['20_COMBAT_SYSTEM.md', 98],
+  initiativeScore: ['20_COMBAT_SYSTEM.md', 31],
+  beastDropChance: ['21_BESTIARY.md', 43],
+}
+
+export function formulaSource(name) {
+  const ref = formulaSources[name]
+  if (!ref) throw new RangeError('Unknown canonical formula source: ' + name)
+  const [path, line] = ref
+  const blobSha = rules.source.moduleShas[path]
+  if (!blobSha) throw new Error('Missing source SHA for formula: ' + name)
+  return { repository: rules.source.repository, commitSha: rules.source.commitSha, path, line, blobSha }
+}
+
+export function evaluateWithSource(name, args) {
+  const functions = {
+    qiCap, passiveQiRegenPerHour, meditationQiPerMinute, actualGrowthDays, harvestYield,
+    tamingChance, evolutionChance, pillPurity, airshipSpeed, buyPrice, sellPrice,
+    auctionCommission, maxHp, hpRegenPerHour, satietyDropPerHour, finalHitChance,
+    attackPower, passiveDefense, finalDamage, criticalChance, initiativeScore, beastDropChance,
+  }
+  const fn = functions[name]
+  if (!fn) throw new RangeError('Unknown canonical formula: ' + name)
+  return { value: fn(args), source: formulaSource(name) }
+}
+
+export function combatRootMultipliers(rootId) {
+  const attack = rules.combat.rootMultipliers.attack[rootId]
+  const defense = rules.combat.rootMultipliers.defense[rootId]
+  if (attack === undefined || defense === undefined) throw new RangeError('Unknown combat root: ' + rootId)
+  return {
+    attack,
+    defense,
+    criticalChanceBonus: rules.combat.rootMultipliers.criticalChanceBonus[rootId] ?? rules.combat.rootMultipliers.rootMultipliers?.default ?? 0,
+    source: rules.combat.rootMultipliers.source,
+    conflicts: rules.sourceConflicts.filter((item) => item.affectedSystem.startsWith('combat.')),
+  }
+}
+
+export function canonicalAttackPower({ qiCap: cap, root: rootId, weaponTier, weaponMultiplier: explicitWeaponMultiplier, weaponSoulBindingBonus = 0 }) {
+  const rootStats = combatRootMultipliers(rootId)
+  const weapon = explicitWeaponMultiplier ?? weaponMultiplierForTier(weaponTier)
+  return attackPower({ qiCap: cap, rootAttackMultiplier: rootStats.attack, weaponMultiplier: weapon, weaponSoulBindingBonus })
+}
+
+export function canonicalPassiveDefense({ qiCap: cap, root: rootId, armorDefenseRating }) {
+  const rootStats = combatRootMultipliers(rootId)
+  return passiveDefense({ qiCap: cap, rootDefenseMultiplier: rootStats.defense, armorDefenseRating })
+}
+
+export function weaponMultiplierForTier(tier) {
+  const known = rules.combat.weaponMultipliers['tier' + tier]
+  if (known !== undefined) return known
+  if (tier >= 5) throw new RangeError('Tier 5+ weapon multiplier is specified as 2.0x+; provide its exact official item multiplier.')
+  throw new RangeError('Unknown weapon tier: ' + tier)
+}
+
+export function canonicalInitiativeScore({ realmIndex, stage, root: rootId, equipmentSpeedBonus = 0, randomRoll }) {
+  const stageBonus = rules.combat.initiative.stageBonus[stage]
+  if (stageBonus === undefined) throw new RangeError('Unknown cultivation stage: ' + stage)
+  const rootSpeedBonus = rules.combat.initiative.rootSpeedBonus[rootId] ?? rules.combat.initiative.rootSpeedBonus.default
+  return initiativeScore({ realmIndex, stageBonus, rootSpeedBonus, equipmentSpeedBonus, randomRoll })
+}
+
+export function fastingMultiplierForRealm(realmIndex) {
+  const row = rules.vitality.fasting.values.find((entry) => entry.realmIndex === realmIndex)
+  if (!row) throw new RangeError('Unknown cultivation realm: ' + realmIndex)
+  return row.multiplier
+}
+
+export function satietyDropForRealm(realmIndex) {
+  const multiplier = fastingMultiplierForRealm(realmIndex)
+  return multiplier === null ? 0 : satietyDropPerHour({ fastingMultiplier: multiplier })
+}
+
+export function buyDiscountModifier({ barterSkillLevel, factionAffinityBonus }) {
+  const raw = 1 - barterSkillLevel * 0.03 - factionAffinityBonus * 0.05
+  return Math.max(rules.economy.buy.minDiscountModifier, raw)
+}
+
+export function finalBuyPrice({ baseValue, barterSkillLevel, factionAffinityBonus, regionScarcityMultiplier }) {
+  const scarcity = Math.min(rules.economy.buy.maxScarcityMultiplier, Math.max(rules.economy.buy.minScarcityMultiplier, regionScarcityMultiplier))
+  return buyPrice({ baseValue, discountModifier: buyDiscountModifier({ barterSkillLevel, factionAffinityBonus }), regionScarcityMultiplier: scarcity })
+}
+
+export function toxinStatus(currentToxinPercent) {
+  if (currentToxinPercent < 0 || currentToxinPercent > 1) throw new RangeError('Toxin percent must be 0..1')
+  return {
+    qiRegenThresholdActive: currentToxinPercent > rules.vitality.toxins.qiRegenThreshold,
+    breakthroughPenaltyActive: currentToxinPercent > rules.vitality.toxins.breakthroughPenaltyThreshold,
+    absorptionBlocked: currentToxinPercent >= rules.vitality.toxins.absorptionBlockedAt,
+    directFormulaMultiplier: 1 - currentToxinPercent,
+    stackingResolution: 'unresolved; do not apply an additional threshold penalty automatically',
+    sourceConflict: rules.sourceConflicts.find((item) => item.id === 'pill-toxin-stacking'),
+  }
+}
+
+export function accumulatePillToxin(previousToxin, consumedPillToxin) {
+  return clamp(previousToxin + consumedPillToxin, 0, 1)
+}
+
+export function naturalToxinCleansing({ currentToxinPercent, meditationHours, consumedPillDuringPeriod = false }) {
+  if (consumedPillDuringPeriod) return currentToxinPercent
+  return Math.max(0, currentToxinPercent - meditationHours / 24 * rules.vitality.toxins.naturalCleansingPer24HourMeditation)
 }
