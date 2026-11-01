@@ -1,0 +1,473 @@
+{
+  "schemaVersion": 1,
+  "status": "verified-extract-with-explicit-coverage",
+  "source": {
+    "repository": "aesher-gg/Xuantian-World",
+    "commitSha": "1b6dbd0bc6cb33ce0db528d9d050a0f44fd2873a",
+    "policy": "read-only",
+    "indexBlobSha": "6bfc4196924d46ee2eb1fa7a2f1d1de405f721e3"
+  },
+  "regions": [
+    {
+      "id": "shenmu",
+      "number": 2,
+      "name": "Shenmu Zhou",
+      "theme": "Kayu, alam, Shenmu, berkebun",
+      "locations": [
+        "Kota Shenmu",
+        "Desa Qingling",
+        "Lembah Biyang",
+        "Hutan Purba Wansen",
+        "Kerajaan Spirit Elf Wanling",
+        "Dataran Abu Hijau",
+        "Hutan Bambu Giok",
+        "Sanctum Pohon Leluhur Wansen",
+        "Lembah Embun Spirit",
+        "Rawa Spora Merah"
+      ],
+      "source": [
+        "INDEX.md",
+        "02_SHENMU_ZHOU.md"
+      ]
+    },
+    {
+      "id": "zhonghua",
+      "number": 3,
+      "name": "Zhonghua Zhou",
+      "theme": "Dataran tengah dan pusat kekaisaran",
+      "locations": [
+        "Kota Tianjing",
+        "Kota Luoyang",
+        "Desa Xingcun",
+        "Lembah Medan Perang Kuno",
+        "Dataran Makam Kekaisaran",
+        "Taman Bunga Terlarang Sembilan Naga",
+        "Lembah Kertas & Kuas Kaligrafi"
+      ],
+      "source": [
+        "INDEX.md",
+        "03_ZHONGHUA_ZHOU.md"
+      ]
+    },
+    {
+      "id": "canglong",
+      "number": 4,
+      "name": "Canglong Zhou",
+      "theme": "Pegunungan pedang",
+      "locations": [
+        "Kota Canglong",
+        "Desa Qingfeng",
+        "Lembah Pedang Berbisik",
+        "Puncak Tebasan Naga",
+        "Ngarai Bambu Pedang",
+        "Danau Pedang Tenggelam",
+        "Desa Penempa Bintang Tebing"
+      ],
+      "source": [
+        "INDEX.md",
+        "04_CANGLONG_ZHOU.md"
+      ]
+    },
+    {
+      "id": "chiyan",
+      "number": 5,
+      "name": "Chiyan Zhou",
+      "theme": "Gunung berapi dan forging",
+      "locations": [
+        "Kota Shendu",
+        "Desa Chishui",
+        "Puncak Danhuang",
+        "Lembah Meteorit Merah",
+        "Gua Lava Hitam",
+        "Kawah Kristal Api Purba",
+        "Perkampungan Kuali Spirit"
+      ],
+      "source": [
+        "INDEX.md",
+        "05_CHIYAN_ZHOU.md"
+      ]
+    },
+    {
+      "id": "canghai",
+      "number": 6,
+      "name": "Canghai Zhou",
+      "theme": "Kepulauan dan lautan",
+      "locations": [
+        "Kota Pelabuhan Haibin",
+        "Kepulauan Xingluo",
+        "Palung Laut Bintang Giok",
+        "Kepulauan Mutiara Purba",
+        "Tembok Es Samudra",
+        "Pulau Terumbu Karang Giok",
+        "Galangan Kapal Bintang Laut"
+      ],
+      "source": [
+        "INDEX.md",
+        "06_CANGHAI_ZHOU.md"
+      ]
+    },
+    {
+      "id": "xixuan",
+      "number": 7,
+      "name": "Xixuan Zhou",
+      "theme": "Gurun dan talisman",
+      "locations": [
+        "Kota Huangsha",
+        "Reruntuhan Kuil Moko",
+        "Oasis Ganlu",
+        "Labirin Batu Pasir Purba",
+        "Ngarai Inskripsi Rune",
+        "Perkampungan Penjinak Unta"
+      ],
+      "source": [
+        "INDEX.md",
+        "07_XIXUAN_ZHOU.md"
+      ]
+    },
+    {
+      "id": "beihan",
+      "number": 8,
+      "name": "Beihan Zhou",
+      "theme": "Padang es dan alkimia es",
+      "locations": [
+        "Kota Hanbing",
+        "Lembah Xueyuan",
+        "Gua Kristal Es Abadi",
+        "Puncak Es Abadi",
+        "Danau Es Cermin Jiwa",
+        "Perkampungan Kereta Sled"
+      ],
+      "source": [
+        "INDEX.md",
+        "08_BEIHAN_ZHOU.md"
+      ]
+    },
+    {
+      "id": "youming",
+      "number": 9,
+      "name": "Youming Zhou",
+      "theme": "Iblis, bayangan, racun",
+      "locations": [
+        "Kota Heian",
+        "Rawa Racun Duwu",
+        "Bukit Tengkorak Hitam",
+        "Lembah Kabut Kelam",
+        "Pasar Malam Bayangan",
+        "Perkampungan Jarum Racun"
+      ],
+      "source": [
+        "INDEX.md",
+        "09_YOUMING_ZHOU.md"
+      ]
+    },
+    {
+      "id": "tiangong",
+      "number": 10,
+      "name": "Tiangong Zhou",
+      "theme": "Airship dan kota melayang",
+      "locations": [
+        "Benteng Melayang Tiangong",
+        "Galangan Shenhang",
+        "Dermaga Levitasi Awan",
+        "Menara Navigasi Bintang",
+        "Anjungan Batu Bintang",
+        "Akademi Pilot Pemula"
+      ],
+      "source": [
+        "INDEX.md",
+        "10_TIANGONG_ZHOU.md"
+      ]
+    },
+    {
+      "id": "juejing",
+      "number": 11,
+      "name": "Juejing Zhou",
+      "theme": "Zona terlarang dan anomali ruang",
+      "locations": [
+        "Pos Depan Juejing",
+        "Lembah Retakan Ruang",
+        "Jurang Anomali Petir Tanah",
+        "Reruntuhan Medan Perang Purba",
+        "Ngarai Kristal Ruang",
+        "Kamp Penjelajah Veteran"
+      ],
+      "source": [
+        "INDEX.md",
+        "11_JUEJING_ZHOU.md"
+      ]
+    }
+  ],
+  "cultivation": {
+    "realms": [
+      {
+        "index": 1,
+        "id": "lingquan",
+        "name": "Lingquan Jing",
+        "qi": {
+          "early": 100,
+          "middle": 150,
+          "peak": 200
+        }
+      },
+      {
+        "index": 2,
+        "id": "kaimai",
+        "name": "Kaimai Jing",
+        "qi": {
+          "early": 500,
+          "middle": 750,
+          "peak": 1000
+        }
+      },
+      {
+        "index": 3,
+        "id": "ningyuan",
+        "name": "Ningyuan Jing",
+        "qi": {
+          "early": 2500,
+          "middle": 3750,
+          "peak": 5000
+        }
+      },
+      {
+        "index": 4,
+        "id": "lingyi",
+        "name": "Lingyi Jing",
+        "qi": {
+          "early": 12500,
+          "middle": 18750,
+          "peak": 25000
+        }
+      },
+      {
+        "index": 5,
+        "id": "xuantian",
+        "name": "Xuantian Jing",
+        "qi": {
+          "early": 62500,
+          "middle": 93750,
+          "peak": 125000
+        }
+      },
+      {
+        "index": 6,
+        "id": "tongtian",
+        "name": "Tongtian Jing",
+        "qi": {
+          "early": 312500,
+          "middle": 468750,
+          "peak": 625000
+        }
+      },
+      {
+        "index": 7,
+        "id": "faxiang",
+        "name": "Faxiang Jing",
+        "qi": {
+          "early": 1562500,
+          "middle": 2343750,
+          "peak": 3125000
+        }
+      },
+      {
+        "index": 8,
+        "id": "shenhuang",
+        "name": "Shenhuang Jing",
+        "qi": {
+          "early": 7812500,
+          "middle": 11718750,
+          "peak": 15625000
+        }
+      },
+      {
+        "index": 9,
+        "id": "hunyuan",
+        "name": "Hunyuan Jing",
+        "qi": {
+          "early": 39062500,
+          "middle": 58593750,
+          "peak": 78125000
+        }
+      }
+    ],
+    "stageMultiplier": {
+      "early": 1,
+      "middle": 1.5,
+      "peak": 2
+    },
+    "spiritualRoots": [
+      {
+        "id": "wood",
+        "name": "Kayu Abadi",
+        "hpMultiplier": 1.5,
+        "qiRegenMultiplier": 1.5
+      },
+      {
+        "id": "fire",
+        "name": "Api Purba",
+        "hpMultiplier": 0.9,
+        "qiRegenMultiplier": 0.9
+      },
+      {
+        "id": "wind-metal",
+        "name": "Angin & Logam",
+        "hpMultiplier": 1,
+        "qiRegenMultiplier": 1
+      },
+      {
+        "id": "earth",
+        "name": "Tanah & Segel",
+        "hpMultiplier": 1.4,
+        "qiRegenMultiplier": 1
+      },
+      {
+        "id": "water-ice",
+        "name": "Air & Es Purba",
+        "hpMultiplier": 1.2,
+        "qiRegenMultiplier": 1.2
+      }
+    ],
+    "formulas": {
+      "qiCap": "BaseQi(realm) × StageMultiplier(stage)",
+      "passiveRegen": "QiCap × 0.05 × RootRegenMultiplier × EnvironmentQiModifier × (1 - PillToxinPercent)",
+      "meditation": "(QiCap × 0.02) × (1 + ComprehensionLevel × 0.10) × SpiritStoneGatheringBonus"
+    },
+    "sourceModules": [
+      "00_CORE_RULES_AI_GM.md",
+      "13_SPIRITUAL_ROOT_SYSTEM.md"
+    ]
+  },
+  "professions": [
+    {
+      "id": "herb-farming",
+      "name": "Berkebun Obat Spirit",
+      "source": "15_SPIRITUAL_HERB_FARMING_SYSTEM.md",
+      "formulas": [
+        "ActualGrowthDays = Max(1, BaseGrowthDays × SoilMultiplier × (1 - FertilizerDiscount - WoodRootBonus))",
+        "HarvestYield = BaseYield × SoilYieldMultiplier × (1 + HerbalistSkillLevel × 0.10)"
+      ],
+      "soilGrowthMultiplier": {
+        "grade1": 1,
+        "grade2": 0.75,
+        "grade3": 0.5,
+        "grade4": 0.25
+      },
+      "soilYieldMultiplier": {
+        "grade1": 1,
+        "grade2": 1.3,
+        "grade3": 1.6,
+        "grade4": 2
+      },
+      "fertilizerDiscount": 0.3,
+      "woodRootBonus": 0.3,
+      "coverage": "Formula resmi tersedia; seluruh 200 baris katalog tanaman menunggu sinkronisasi snapshot lengkap."
+    },
+    {
+      "id": "beast-taming",
+      "name": "Penjinakan Spirit Beast",
+      "source": "16_BEAST_TAMING_SYSTEM.md",
+      "formulas": [
+        "TamingSuccessChance = Clamp(30% + RealmDiffBonus + HPDepletionBonus + SealTierBonus + BaitBonus - WildnessPenalty, 5%, 95%)",
+        "EvolutionChance = Clamp(40% + BloodlinePurityBonus + EvolutionPillQualityBonus + ElementalCatalystBonus - TierJumpPenalty, 5%, 90%)"
+      ],
+      "tiers": 9,
+      "contracts": [
+        "Equal Blood Pact",
+        "Master-Servant Pact",
+        "Symbiotic Life Pact"
+      ]
+    },
+    {
+      "id": "alchemy",
+      "name": "Alkimia dan Pemurnian Pill",
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "formula": "FinalPurity = Clamp(50% + FlameQualityBonus + CauldronTier × 5% + AlchemistLevel × 3% - (PillTier - AlchemistTier) × 15%, 10%, 100%)"
+    },
+    {
+      "id": "array",
+      "name": "Formasi",
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "formula": "BarrierHP = ArrayDiscBaseHP × (1 + ArrayMasterLevel × 0.15) × EnvironmentQiMultiplier"
+    },
+    {
+      "id": "forging",
+      "name": "Penempaan",
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "formula": "WeaponDamage = BaseWeaponDamage × (1 + BlacksmithLevel × 0.08) × (1 + MetalTier × 0.10)"
+    },
+    {
+      "id": "talisman",
+      "name": "Jimat",
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "formula": "TalismanSuccessChance = Clamp(60% + (TalismanMasterLevel - TalismanTier) × 10% + PaperQualityBonus, 10%, 95%)"
+    },
+    {
+      "id": "airship",
+      "name": "Navigasi Airship",
+      "source": "17_AIRSHIP_NAVIGATION_SYSTEM.md",
+      "formula": "FinalAirshipSpeed = BaseSpeed × (1 + PilotTier × 10% + Realm3QiDriveBonus)",
+      "baseSpeedLiPerDay": {
+        "skiff": 500,
+        "freighter": 1000,
+        "galleon": 2500,
+        "battleship": 4000
+      }
+    }
+  ],
+  "economy": {
+    "currency": [
+      "Copper Tael (CT)",
+      "Silver Tael (ST)",
+      "Jade Tael (JT)",
+      "Low Spirit Stone (LSS)",
+      "Middle Spirit Stone (MSS)",
+      "High Spirit Stone (HSS)",
+      "Ascendant Spirit Stone (ASS)"
+    ],
+    "formulas": [
+      "FinalBuyPrice = ItemBaseValue × DiscountModifier × RegionScarcityMultiplier",
+      "PlayerSellValue = ItemBaseValue × 0.50 × (1 + BarterSkillLevel × 0.05)",
+      "AuctionCommission = FinalBidAmount × (0.10 - YouxiaRankBonus × 0.01)"
+    ],
+    "source": "18_ECONOMY_SYSTEM.md"
+  },
+  "vitality": {
+    "formulas": [
+      "MaxHP = RealmBaseQiCap × StageMultiplier × 0.40 × SpiritualRootHPMultiplier × (1 + BodyFortificationBonus)",
+      "HPRegenPerHour = MaxHP × 0.05 × RootRegenMultiplier × EnvironmentQiMultiplier",
+      "SatietyDropPerHour = 10% / FastingMultiplier(realm)",
+      "CurrentToxinPercent = Clamp(PreviousToxin + ConsumedPillToxin, 0%, 100%)"
+    ],
+    "source": "19_VITALITY_HUNGER_SYSTEM.md"
+  },
+  "combat": {
+    "formulas": [
+      "InitiativeScore = RealmIndex × 100 + StageBonus + RootSpeedBonus + EquipmentSpeedBonus + Random(1–20)",
+      "AttackPower = CharacterQiCap × 0.15 × SpiritualRootAttackMultiplier × WeaponMultiplier × (1 + WeaponSoulBindingBonus)",
+      "PassiveDefense = CharacterQiCap × 0.05 × SpiritualRootDefenseMultiplier + ArmorDefenseRating",
+      "FinalHitChance = Clamp(70% + (AttackerRealmIndex - DefenderRealmIndex) × 5% - DodgePenalty + AccuracyBonus, 10%, 95%)",
+      "CritChance = 5% + AttackerDexterity × 0.5% + WindMetalRootBonus(5%)",
+      "FinalDamage = Max(1, (AttackPower × SkillMultiplier - PassiveDefense) × IsCrit)"
+    ],
+    "source": "20_COMBAT_SYSTEM.md"
+  },
+  "bestiary": {
+    "tiers": 9,
+    "source": "21_BESTIARY.md",
+    "dropFormula": "DropChance = BaseRate(Rarity) × TierModifier(BeastTier) - (CarcassDamage × 10%)",
+    "coverage": "Species roster is maintained in source module and will be normalized from complete snapshot."
+  },
+  "sourceShas": {
+    "00_CORE_RULES_AI_GM.md": "f340b9be97d54893dad3beb6c7c50718cbae19c8",
+    "01_WORLD_OVERVIEW_AND_CAPITAL.md": "7d8f8e552f20678fd17e405e5aab85447edb86b5",
+    "13_SPIRITUAL_ROOT_SYSTEM.md": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae",
+    "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md": "c396bd331c14fd8ce3ff40ee546f5ee37f51c642",
+    "15_SPIRITUAL_HERB_FARMING_SYSTEM.md": "2481f7011caa829157c5ea24e4c5920e0fcf62c1",
+    "16_BEAST_TAMING_SYSTEM.md": "de70f4a2817dcd506a274bc3dcd5538b9131ce01",
+    "17_AIRSHIP_NAVIGATION_SYSTEM.md": "ab75457146c452d28d93ebc499f2f3e07173436b",
+    "18_ECONOMY_SYSTEM.md": "afaf9bf69f5274dea47bc1997ae48583f405fde2",
+    "19_VITALITY_HUNGER_SYSTEM.md": "54391dbd8f425bebbbecbb6a71d8c1fccfbc194092",
+    "20_COMBAT_SYSTEM.md": "6395774f887c6292c49d68e72a322fdd701f67f2",
+    "21_BESTIARY.md": "b5d8ca9292930699f62347c58c0a710cfa8702c3"
+  }
+}
