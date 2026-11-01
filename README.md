@@ -30,8 +30,10 @@ Implemented in this repository:
 - World clock and deterministic action progression
 - Cultivation action now calls the official Module 13 meditation formula, with QiCap enforcement
 - Typed, provenance-aware domain catalog for 10 regions, 9 realms, 5 spiritual-root families and 7 profession systems
-- Deterministic formula functions for cultivation, farming, taming, alchemy, airships, economy, vitality and combat
-- Formula tests, source discrepancy notes and CI validation pipeline
+- Source-traced operational rules JSON for all ten regions, nine realms, roots, seven professions, 200 herbs, 344 beasts and 37 formula records
+- Deterministic formula functions for cultivation, farming, taming, alchemy, airships, economy, vitality and combat, with formula source metadata
+- Six explicit cross-module conflicts retained for review; combat-specific values are scoped to Module 20 rather than silently overwriting Module 13
+- Formula tests and CI validation that blocks stale source SHA mappings
 
 Still pending: formula parity for every sub-system; seeded combat/loot rolls; full UI integration of all 10 regions and the 200 herbs/344 beasts; NPC autonomy; AI providers; and production persistence. Unspecified modifiers are explicit function inputs, not guessed constants.
 
@@ -58,7 +60,7 @@ The canonical index describes 10 major regions and systems for cultivation, prof
 
 The importer is implemented in `scripts/import-world-bible.mjs`. Run `npm run import:world-bible` to fetch every module indexed by the canonical `INDEX.md` and the starter-character catalog. It verifies every file against the source Git blob SHA, preserves snapshots under `world-bible/snapshots/`, and writes `catalog.json`, `validation-report.json`, plus `domain-catalog.json` under `world-bible/generated/` and the runtime copy under `public/data/world-bible/`.
 
-The domain extraction retains all official tables for the 200-herb and bestiary catalogs, region source tables, and formula expressions with source paths and SHAs. `src/domain/canonFormulas.mjs` contains deterministic functions for rules already mapped; missing modifiers must be supplied by game state. `npm test` checks importer and formula examples. CI performs the full sync, build, and artifact upload. The source repository is read-only and is never written.
+The domain extraction retains all official tables for the 200-herb and bestiary catalogs, region source tables, and formula expressions with source paths and SHAs. simulation-rules.json maps the extracted data into operational constants for cultivation, farming, beast taming, economy, vitality, combat, movement and profession systems. `src/domain/canonFormulas.mjs` contains deterministic functions for rules already mapped; missing modifiers must be supplied by game state. `npm test` checks importer and formula examples. CI performs the full sync, build, and artifact upload. The source repository is read-only and is never written.
 
 ## Milestones
 
