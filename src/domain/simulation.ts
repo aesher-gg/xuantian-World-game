@@ -22,7 +22,7 @@ export function cultivate(snapshot: GameSnapshot): GameSnapshot {
   const gain = Math.min(next.player.qiCap - next.player.qi, potentialGain)
   next.player.qi += gain
   next.player.cultivationMinutes += 60
-  next.world.eventLog.unshift(`Aliran Wood Qi menambah ${gain} Qi.`)
+  next.world.eventLog.unshift(`Meditasi resmi menambah ${gain} Qi.`)
   return next
 }
 export function plantHerb(snapshot: GameSnapshot): GameSnapshot {
