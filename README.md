@@ -32,7 +32,7 @@ Implemented in this repository:
 - Typed, provenance-aware domain catalog for 10 regions, 9 realms, 5 spiritual-root families and 7 profession systems
 - Source-traced operational rules JSON for all ten regions, nine realms, roots, seven professions, 200 herbs, 344 beasts and 37 formula records
 - Deterministic formula functions for cultivation, farming, taming, alchemy, airships, economy, vitality and combat, with formula source metadata
-- Six explicit cross-module conflicts retained for review; combat-specific values are scoped to Module 20 rather than silently overwriting Module 13
+- Seven explicit source conflicts retained for review; combat-specific values are scoped to Module 20 rather than silently overwriting Module 13
 - Formula tests and CI validation that blocks stale source SHA mappings
 
 Still pending: formula parity for every sub-system; seeded combat/loot rolls; full UI integration of all 10 regions and the 200 herbs/344 beasts; NPC autonomy; AI providers; and production persistence. Unspecified modifiers are explicit function inputs, not guessed constants.
