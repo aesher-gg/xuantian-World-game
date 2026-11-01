@@ -21,6 +21,7 @@ export const initialState: GameSnapshot = {
     soilGrade: 1,
     fertilized: false,
     woodRoot: false,
+    // Official base-yield range is 2–5; use its lower bound until a seeded roll policy is defined.
     baseYield: 2,
     baseYieldMax: 5,
     herbalistSkillLevel: 0,
