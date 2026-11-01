@@ -1493,6 +1493,32 @@
         }
       ],
       "runtimePolicy": "Keep the formula factor and threshold status separately observable; do not add a second -30% multiplier without an authoritative stacking rule."
+    },
+    {
+      "id": "economy-faction-affinity-discount",
+      "severity": "medium",
+      "status": "unresolved",
+      "affectedSystem": "economy.finalBuyPrice",
+      "summary": "The written discount equation multiplies FactionAffinityBonus by 0.05, but the worked example subtracts 0.10 for a stated +10% affinity bonus. Those inputs do not reconcile if +10% is represented as 0.10.",
+      "values": [
+        {
+          "source": {
+            "path": "18_ECONOMY_SYSTEM.md",
+            "line": 57,
+            "blobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2"
+          },
+          "value": "DiscountModifier = 1 - (BarterSkillLevel × 0.03) - (FactionAffinityBonus × 0.05)"
+        },
+        {
+          "source": {
+            "path": "18_ECONOMY_SYSTEM.md",
+            "line": 62,
+            "blobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2"
+          },
+          "value": "Worked example: +10% affinity contributes a 0.10 discount"
+        }
+      ],
+      "runtimePolicy": "Use the written equation with the raw numeric FactionAffinityBonus input; do not silently convert percentage representations. Resolve parameter semantics before exposing player-facing faction discounts."
     }
   ],
   "runtimePolicy": {
