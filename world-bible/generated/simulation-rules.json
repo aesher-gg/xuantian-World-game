@@ -410,6 +410,13 @@
       "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
       "line": 29,
       "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+    },
+    "qiRegen": {
+      "baseRate": 0.05
+    },
+    "meditation": {
+      "baseRate": 0.02,
+      "comprehensionBonusPerLevel": 0.1
     }
   },
   "professions": [
@@ -924,7 +931,8 @@
         "path": "20_COMBAT_SYSTEM.md",
         "line": 31,
         "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
-      }
+      },
+      "realmIndexMultiplier": 100
     },
     "actionEconomy": {
       "mainActions": 1,
@@ -980,7 +988,8 @@
         "path": "20_COMBAT_SYSTEM.md",
         "line": 68,
         "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
-      }
+      },
+      "tier5PlusNote": "2.0x+; exact value is item-defined and must be supplied explicitly"
     },
     "attackFormula": "AttackPower = CharacterQiCap × 0.15 × SpiritualRootAttackMultiplier × WeaponMultiplier × (1 + WeaponSoulBindingBonus)",
     "defenseFormula": "PassiveDefense = CharacterQiCap × 0.05 × SpiritualRootDefenseMultiplier + ArmorDefenseRating",
@@ -1050,6 +1059,27 @@
       "path": "20_COMBAT_SYSTEM.md",
       "line": 27,
       "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
+    },
+    "attack": {
+      "baseFactor": 0.15,
+      "weaponSoulBindingBonus": 0.2
+    },
+    "defense": {
+      "baseFactor": 0.05
+    },
+    "hitChance": {
+      "base": 0.7,
+      "realmAdvantagePerRank": 0.05,
+      "min": 0.1,
+      "max": 0.95
+    },
+    "critical": {
+      "base": 0.05,
+      "dexterityFactor": 0.005,
+      "multiplier": 1.5
+    },
+    "damage": {
+      "minimum": 1
     }
   },
   "bestiary": {
