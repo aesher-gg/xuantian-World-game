@@ -71,3 +71,9 @@ test('formula evaluations include immutable source provenance', () => {
   assert.equal(qi.value, 150)
   assert.equal(qi.source.path, '13_SPIRITUAL_ROOT_SYSTEM.md')
 })
+
+test('operational validator rejects stale or incomplete source mappings', () => {
+  const report = validateOperationalData({ catalog: { source: { commitSha: 'a', repository: 'aesher-gg/Xuantian-World', policy: 'read-only' }, modules: [] }, validationReport: { valid: true, source: { commitSha: 'a' } }, domainCatalog: { source: { commitSha: 'a', repository: 'aesher-gg/Xuantian-World', policy: 'read-only' }, regions: [], cultivation: { realms: [], spiritualRoots: [] }, professions: [], herbCatalog: [], beastCatalog: [], formulaRegistry: [], sourceShas: {} }, simulationRules: { source: { commitSha: 'a', repository: 'aesher-gg/Xuantian-World', policy: 'read-only', moduleShas: {} }, world: { regions: [] }, cultivation: { realms: [], spiritualRoots: [] }, professions: [], herbalism: { catalogCount: 0, catalogComplete: false }, bestiary: { recordCount: 0 }, formulaRegistry: [], sourceConflicts: [], runtimePolicy: {} } })
+  assert.equal(report.valid, false)
+  assert.ok(report.errors.length > 0)
+})
