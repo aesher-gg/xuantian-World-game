@@ -63,6 +63,19 @@ export function passiveDefense({ qiCap: cap, rootDefenseMultiplier, armorDefense
 export function finalDamage({ attackPower: ap, skillMultiplier, passiveDefense: defense, isCrit }) {
   return Math.max(1, (ap * skillMultiplier - defense) * (isCrit ? 1.5 : 1))
 }
+export function evolutionChance({ currentBloodlinePurityPercent, evolutionPillQualityBonus, hasMatchingElementalCatalyst, currentTier, targetTier }) {
+  return clamp(0.4 + currentBloodlinePurityPercent * 0.3 + evolutionPillQualityBonus + (hasMatchingElementalCatalyst ? 0.15 : 0) - (targetTier - currentTier) * 0.25, 0.05, 0.9)
+}
+export function satietyDropPerHour({ fastingMultiplier }) {
+  if (fastingMultiplier <= 0) throw new RangeError('Fasting multiplier must be positive')
+  return 0.1 / fastingMultiplier
+}
+export function criticalChance({ attackerDexterity, windMetalRoot }) {
+  return 0.05 + attackerDexterity * 0.005 + (windMetalRoot ? 0.05 : 0)
+}
+export function beastDropChance({ baseRarityRate, tierModifier, carcassDamagePercent }) {
+  return baseRarityRate * tierModifier - carcassDamagePercent * 0.1
+}
 export function initiativeScore({ realmIndex, stageBonus, rootSpeedBonus, equipmentSpeedBonus, randomRoll }) {
   if (!Number.isInteger(randomRoll) || randomRoll < 1 || randomRoll > 20) throw new RangeError('Initiative random roll must be 1..20')
   return realmIndex * 100 + stageBonus + rootSpeedBonus + equipmentSpeedBonus + randomRoll
