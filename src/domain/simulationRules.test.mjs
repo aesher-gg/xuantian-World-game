@@ -19,7 +19,7 @@ test('operational rules are tied to the exact imported canon snapshot', () => {
   assert.equal(rules.herbalism.catalogCount, 200)
   assert.equal(rules.bestiary.recordCount, 344)
   assert.equal(rules.formulaRegistry.length, 37)
-  assert.equal(rules.sourceConflicts.length, 6)
+  assert.equal(rules.sourceConflicts.length, 7)
   for (const [path, sha] of Object.entries(rules.source.moduleShas)) assert.equal(domain.sourceShas[path], sha)
 })
 
@@ -45,7 +45,8 @@ test('initiative and fasting use official indexed values', () => {
 })
 
 test('economy price uses official discount and scarcity bounds', () => {
-  assert.equal(finalBuyPrice({ baseValue: 20, barterSkillLevel: 3, factionAffinityBonus: 0.1, regionScarcityMultiplier: 1.5 }), 24.3)
+  assert.equal(finalBuyPrice({ baseValue: 20, barterSkillLevel: 3, factionAffinityBonus: 0.1, regionScarcityMultiplier: 1.5 }), 24.45)
+  assert.equal(finalBuyPrice({ baseValue: 20, barterSkillLevel: 3, factionAffinityBonus: 2, regionScarcityMultiplier: 1.5 }), 24.3)
   assert.equal(finalBuyPrice({ baseValue: 100, barterSkillLevel: 20, factionAffinityBonus: 1, regionScarcityMultiplier: 9 }), 175)
 })
 
