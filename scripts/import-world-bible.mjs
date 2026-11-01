@@ -72,6 +72,7 @@ export async function runImport() {
   const commit = await getJson(base + '/commits/' + SOURCE_BRANCH)
   const tree = await getJson(base + '/git/trees/' + commit.commit.tree.sha + '?recursive=1')
   const blobs = new Map((tree.tree ?? []).filter((item) => item.type === 'blob').map((item) => [item.path, item.sha]))
+  if (gitBlobSha(index) !== blobs.get('INDEX.md')) throw new Error('Git blob SHA mismatch for INDEX.md')
   const entries = parseIndex(index)
   if (!entries.some((item) => item.path === 'players.md')) entries.push({ id: 'hub', moduleLabel: 'Hub', path: 'players.md', description: 'Read-only starter character catalog' })
   const missing = entries.filter((item) => !blobs.has(item.path))
