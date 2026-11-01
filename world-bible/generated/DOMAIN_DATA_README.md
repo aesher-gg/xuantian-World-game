@@ -7,4 +7,4 @@ Coverage includes 10 region records, 9 cultivation realms, 3 stages, 5 root fami
 Review flags:
 - The vitality module's MaxHP reference table uses Lingquan base QiCap 2,500, while the core cultivation table defines Lingquan early Qi as 100. The formula accepts realmBaseQiCap explicitly; do not reconcile this discrepancy silently.
 - The combat module labels RealmIndex 1–9 and describes Realm 9 as Fei Sheng in one parameter note, while the core realm table names Realm 9 Hunyuan Jing.
-- Full 200-herb and all-beast roster normalization remains pending complete Markdown snapshot ingestion. This domain catalog does not pretend those records are complete.
+- The successful source sync extracted all 200 herb rows and 344 beast records. Each record retains its module path, source blob SHA, source line/table and section context.
