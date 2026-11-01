@@ -16,9 +16,10 @@
 - [ ] Verify build and refine simulation rules.
 
 ## Phase 2 — Deterministic simulation
-- [ ] Port cultivation, vitality, economy and combat formulas.
-- [ ] Seeded random service and replayable event log.
-- [ ] Unit tests for formula parity against canon examples.
+- [x] Add typed domain catalog for regions, realms, roots, professions, economy, vitality and combat.
+- [x] Implement core deterministic formula functions with explicit input modifiers.
+- [x] Add unit tests for canonical worked examples.
+- [ ] Complete formula parity and seeded random outcomes; wire each formula into all relevant gameplay actions.
 - [ ] NPC needs, routines, relationships and memory records.
 
 ## Phase 3 — AI identity
@@ -34,7 +35,8 @@
 - [ ] Persistence service and multi-save support.
 
 ## Phase 5 — Expansion
-- [ ] Import all ten regions and remaining World Bible modules.
+- [x] Define all ten region records and extract regional source tables during the full importer run.
+- [ ] Verify complete CI snapshot sync and review catalog completeness warnings.
 - [ ] Add exploration, airship travel, crafting, beast taming and professions.
 - [ ] Add optional Phaser/PixiJS world renderer and responsive mobile controls.
 
