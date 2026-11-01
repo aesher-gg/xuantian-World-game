@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "sourceRepository": "aesher-gg/Xuantian-World",
+  "sourceBranch": "main",
+  "policy": "read-only",
+  "snapshotMode": "manifest-only",
+  "note": "Blob SHAs identify the exact source files inspected during the initial architecture and prototype pass. Full Markdown snapshots and normalized JSON imports are a later milestone.",
+  "files": [
+    {"path":"INDEX.md","blobSha":"6bfc4196924d46ee2eb1fa7a2f1d1de405f721e3","role":"module index"},
+    {"path":"00_CORE_RULES_AI_GM.md","blobSha":"f340b9be97d54893dad3beb6c7c50718cbae19c8","role":"anti-cheat and world truth rules; requires migration from AI-GM instructions to engine invariants"},
+    {"path":"01_WORLD_OVERVIEW_AND_CAPITAL.md","blobSha":"7d8f8e552f20678fd17e405e5aab85447edb86b5","role":"cosmology, geography, travel and capital"},
+    {"path":"02_SHENMU_ZHOU.md","blobSha":"26dde7ddb8ec1b92cd77e4df59008e31d2d64497","role":"starting region content"},
+    {"path":"13_SPIRITUAL_ROOT_SYSTEM.md","blobSha":"fe2f6ee0eac9defcde66e6c17db9c822242d8fae","role":"cultivation and spiritual roots"},
+    {"path":"15_SPIRITUAL_HERB_FARMING_SYSTEM.md","blobSha":"2481f7011caa829157c5ea24e4c5920e0fcf62c1","role":"herb growth and harvest"},
+    {"path":"18_ECONOMY_SYSTEM.md","blobSha":"afaf9bf69f5274dea47bc1997ae48583f405fde2","role":"currency and price formula"},
+    {"path":"20_COMBAT_SYSTEM.md","blobSha":"6395774f887c6292c49d68e72a322fdd701f67f2","role":"turn-based combat formula"}
+  ]
+}
