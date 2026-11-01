@@ -110,7 +110,7 @@ const formulaSources = {
   fastingMultiplierForRealm: ['19_VITALITY_HUNGER_SYSTEM.md', 83],
   toxinAccumulation: ['19_VITALITY_HUNGER_SYSTEM.md', 105],
   naturalToxinCleansing: ['19_VITALITY_HUNGER_SYSTEM.md', 114],
-  beastDropChance: ['21_BESTIARY.md', 41],
+  beastDropChance: ['21_BESTIARY.md', 42],
 }
 
 export function formulaSource(name) {
