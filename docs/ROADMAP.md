@@ -17,6 +17,9 @@
 
 ## Phase 2 — Deterministic simulation
 - [x] Add typed domain catalog for regions, realms, roots, professions, economy, vitality and combat.
+- [x] Map 10 regions, 9 realms, 5 roots, 7 professions, 200 herbs, 344 beasts and 37 formula records into source-traced operational JSON.
+- [x] Preserve six cross-module canon discrepancies and gate the build on source SHA consistency.
+- [x] Connect cultivation and herb planting/harvesting to official formula inputs; store harvests in inventory without inventing automatic sale proceeds.
 - [x] Implement core deterministic formula functions with explicit input modifiers.
 - [x] Add unit tests for canonical worked examples.
 - [ ] Complete formula parity and seeded random outcomes; wire each formula into all relevant gameplay actions.
