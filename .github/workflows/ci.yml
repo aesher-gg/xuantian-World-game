@@ -24,6 +24,8 @@ jobs:
       - name: Test importer parser and validation
         run: npm test
       - name: Import canonical World Bible
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: npm run import:world-bible
       - name: Build web game
         run: npm run build
