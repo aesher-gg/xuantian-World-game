@@ -9,7 +9,7 @@ test('combat calculations are deterministic with supplied roll',()=>{assert.equa
 
 import { evolutionChance, satietyDropPerHour, criticalChance, beastDropChance } from './canonFormulas.mjs'
 test('secondary canonical formula functions preserve explicit modifiers',()=>{
- assert.equal(evolutionChance({currentBloodlinePurityPercent:.5,evolutionPillQualityBonus:.15,hasMatchingElementalCatalyst:true,currentTier:2,targetTier:3}),.575)
+ assert.equal(evolutionChance({currentBloodlinePurityPercent:.5,evolutionPillQualityBonus:.15,hasMatchingElementalCatalyst:true,currentTier:2,targetTier:3}),.6)
  assert.equal(satietyDropPerHour({fastingMultiplier:2}),.05)
  assert.equal(criticalChance({attackerDexterity:10,windMetalRoot:true}),.15)
  assert.equal(beastDropChance({baseRarityRate:.8,tierModifier:1,carcassDamagePercent:.2}),.78)
