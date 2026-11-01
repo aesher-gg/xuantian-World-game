@@ -9,7 +9,8 @@
     "preview": "vite preview --host 0.0.0.0",
     "import:world-bible": "node scripts/import-world-bible.mjs",
     "test:import": "node --test scripts/import-world-bible.test.mjs src/domain/canonFormulas.test.mjs src/domain/domainCatalog.test.mjs src/domain/simulationRules.test.mjs",
-    "test": "npm run test:import"
+    "test": "npm run test:import",
+    "validate:operational-data": "node scripts/validate-operational-data.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
