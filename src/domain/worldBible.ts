@@ -70,8 +70,9 @@ export function validateWorldBibleCatalog(value: unknown): value is WorldBibleCa
   if (!value || typeof value !== 'object') return false
   const catalog = value as Partial<WorldBibleCatalog>
   if (catalog.schemaVersion !== 1 || !catalog.source || catalog.source.policy !== 'read-only') return false
-  if (catalog.source.repository !== 'aesher-gg/Xuantian-World' || !catalog.source.commitSha) return false
-  if (!Array.isArray(catalog.modules) || catalog.modules.length === 0) return false
+  if (catalog.source.repository !== 'aesher-gg/Xuantian-World' || !/^[a-f0-9]{40}$/.test(catalog.source.commitSha)) return false
+  if (!catalog.summary || !Array.isArray(catalog.summary.regionModules) || !Array.isArray(catalog.summary.systemModules)) return false
+  if (!Array.isArray(catalog.modules) || catalog.modules.length === 0 || catalog.summary.importedModuleCount !== catalog.modules.length) return false
   const paths = new Set<string>()
   for (const module of catalog.modules) {
     if (!module.path || !module.title || !/^[a-f0-9]{40}$/.test(module.blobSha)) return false
