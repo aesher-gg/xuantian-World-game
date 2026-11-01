@@ -11,6 +11,6 @@ import { evolutionChance, satietyDropPerHour, criticalChance, beastDropChance } 
 test('secondary canonical formula functions preserve explicit modifiers',()=>{
  assert.ok(Math.abs(evolutionChance({currentBloodlinePurityPercent:.5,evolutionPillQualityBonus:.15,hasMatchingElementalCatalyst:true,currentTier:2,targetTier:3})-.6)<1e-9)
  assert.equal(satietyDropPerHour({fastingMultiplier:2}),.05)
- assert.equal(criticalChance({attackerDexterity:10,windMetalRoot:true}),.15)
+ assert.ok(Math.abs(criticalChance({attackerDexterity:10,windMetalRoot:true})-.15)<1e-9)
  assert.equal(beastDropChance({baseRarityRate:.8,tierModifier:1,carcassDamagePercent:.2}),.78)
 })
