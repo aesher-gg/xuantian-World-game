@@ -94,6 +94,8 @@ const formulaSources = {
   pillPurity: ['14_CRAFTING_AND_PROFESSIONS_SYSTEM.md', 46],
   airshipSpeed: ['17_AIRSHIP_NAVIGATION_SYSTEM.md', 22],
   buyPrice: ['18_ECONOMY_SYSTEM.md', 51],
+  buyDiscountModifier: ['18_ECONOMY_SYSTEM.md', 57],
+  finalBuyPrice: ['18_ECONOMY_SYSTEM.md', 52],
   sellPrice: ['18_ECONOMY_SYSTEM.md', 71],
   auctionCommission: ['18_ECONOMY_SYSTEM.md', 80],
   maxHp: ['19_VITALITY_HUNGER_SYSTEM.md', 31],
@@ -105,7 +107,10 @@ const formulaSources = {
   finalDamage: ['20_COMBAT_SYSTEM.md', 97],
   criticalChance: ['20_COMBAT_SYSTEM.md', 98],
   initiativeScore: ['20_COMBAT_SYSTEM.md', 31],
-  beastDropChance: ['21_BESTIARY.md', 43],
+  fastingMultiplierForRealm: ['19_VITALITY_HUNGER_SYSTEM.md', 83],
+  toxinAccumulation: ['19_VITALITY_HUNGER_SYSTEM.md', 105],
+  naturalToxinCleansing: ['19_VITALITY_HUNGER_SYSTEM.md', 114],
+  beastDropChance: ['21_BESTIARY.md', 41],
 }
 
 export function formulaSource(name) {
@@ -120,7 +125,7 @@ export function formulaSource(name) {
 export function evaluateWithSource(name, args) {
   const functions = {
     qiCap, passiveQiRegenPerHour, meditationQiPerMinute, actualGrowthDays, harvestYield,
-    tamingChance, evolutionChance, pillPurity, airshipSpeed, buyPrice, sellPrice,
+    tamingChance, evolutionChance, pillPurity, airshipSpeed, buyPrice, buyDiscountModifier, finalBuyPrice, sellPrice,
     auctionCommission, maxHp, hpRegenPerHour, satietyDropPerHour, finalHitChance,
     attackPower, passiveDefense, finalDamage, criticalChance, initiativeScore, beastDropChance,
   }
@@ -208,4 +213,10 @@ export function accumulatePillToxin(previousToxin, consumedPillToxin) {
 export function naturalToxinCleansing({ currentToxinPercent, meditationHours, consumedPillDuringPeriod = false }) {
   if (consumedPillDuringPeriod) return currentToxinPercent
   return Math.max(0, currentToxinPercent - meditationHours / 24 * rules.vitality.toxins.naturalCleansingPer24HourMeditation)
+}
+
+
+export function canonicalCriticalChance({ attackerDexterity, root: rootId }) {
+  const rootBonus = combatRootMultipliers(rootId).criticalChanceBonus
+  return rules.combat.critical.base + attackerDexterity * rules.combat.critical.dexterityFactor + rootBonus
 }
