@@ -67,7 +67,7 @@ async function getText(url) { const response = await fetch(url, { headers: { 'Us
 async function getJson(url) { const response = await fetch(url, { headers: { 'User-Agent': 'Xuantian-World-Importer/1.0', Accept: 'application/vnd.github+json' } }); if (!response.ok) throw new Error('HTTP ' + response.status + ' fetching ' + url); return response.json() }
 async function parallel(items, limit, fn) { const results = new Array(items.length); let cursor = 0; await Promise.all(Array.from({ length: Math.min(limit, items.length) }, async () => { while (cursor < items.length) { const i = cursor++; results[i] = await fn(items[i], i) } })); return results }
 
-const normalizeHeader = (value) => value.replace(/<br\\s*\\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\\*\\*/g, '').replace(/\\*/g, '').trim()
+const normalizeHeader = (value) => value.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\*\*/g, '').replace(/\*/g, '').trim()
 function tableRecords(module, requiredHeaders) {
   const records = []
   for (const table of module?.tables ?? []) {
@@ -94,45 +94,21 @@ export function buildDomainCatalog(seed, catalog) {
   const beastCatalog = tableRecords(beastModule, ['Nama Beast', 'Loot'])
   const regionSourceData = seed.regions.map((region) => {
     const module = byPath.get(region.source[1])
-    return {
-      id: region.id,
-      source: region.source[1],
-      sourceBlobSha: module?.blobSha ?? null,
-      title: module?.title ?? region.name,
-      headings: module?.headings ?? [],
-      tables: module?.tables ?? [],
-      sections: module?.sections ?? []
-    }
+    return { id: region.id, source: region.source[1], sourceBlobSha: module?.blobSha ?? null, title: module?.title ?? region.name, headings: module?.headings ?? [], tables: module?.tables ?? [], sections: module?.sections ?? [] }
   })
   const formulaRegistry = []
   for (const module of catalog.modules) {
     if (!/13_SPIRITUAL_ROOT|14_CRAFTING|15_SPIRITUAL_HERB|16_BEAST|17_AIRSHIP|18_ECONOMY|19_VITALITY|20_COMBAT/.test(module.path)) continue
-    for (const block of module.codeBlocks ?? []) {
-      formulaRegistry.push({ source: module.path, sourceBlobSha: module.blobSha, startLine: block.startLine, expression: block.content })
-    }
-    for (const section of module.sections ?? []) {
-      for (const line of section.content.split(/\\r?\\n/)) {
-        if (/^[A-Za-z][A-Za-z0-9_]*(?:\\([^)]*\\))?\\s*=/.test(line.trim())) {
-          formulaRegistry.push({ source: module.path, sourceBlobSha: module.blobSha, startLine: section.line, section: section.title, expression: line.trim() })
-        }
-      }
+    for (const block of module.codeBlocks ?? []) formulaRegistry.push({ source: module.path, sourceBlobSha: module.blobSha, startLine: block.startLine, expression: block.content })
+    for (const section of module.sections ?? []) for (const line of section.content.split(/\r?\n/)) {
+      if (/^[A-Za-z][A-Za-z0-9_]*(?:\([^)]*\))?\s*=/.test(line.trim())) formulaRegistry.push({ source: module.path, sourceBlobSha: module.blobSha, startLine: section.line, section: section.title, expression: line.trim() })
     }
   }
   return {
     ...seed,
     status: 'source-synced-domain-extract',
     source: { ...seed.source, commitSha: catalog.source.commitSha, importedAt: catalog.source.importedAt },
-    coverage: {
-      regionCount: regionSourceData.length,
-      realmCount: seed.cultivation.realms.length,
-      spiritualRootCount: seed.cultivation.spiritualRoots.length,
-      professionCount: seed.professions.length,
-      herbCount: herbCatalog.length,
-      expectedHerbCount: 200,
-      herbCatalogComplete: herbCatalog.length >= 200,
-      beastRecordCount: beastCatalog.length,
-      formulaCount: formulaRegistry.length
-    },
+    coverage: { regionCount: regionSourceData.length, realmCount: seed.cultivation.realms.length, spiritualRootCount: seed.cultivation.spiritualRoots.length, professionCount: seed.professions.length, herbCount: herbCatalog.length, expectedHerbCount: 200, herbCatalogComplete: herbCatalog.length >= 200, beastRecordCount: beastCatalog.length, formulaCount: formulaRegistry.length },
     regionSourceData,
     herbCatalog,
     beastCatalog,
@@ -176,6 +152,8 @@ export async function runImport() {
   for (const item of imported) { const target = resolve(SNAPSHOTS, item.entry.path); await mkdir(dirname(target), { recursive: true }); await writeFile(target, item.markdown, 'utf8') }
   await writeFile(resolve(GENERATED, 'catalog.json'), JSON.stringify(catalog, null, 2) + '\n', 'utf8')
   await writeFile(resolve(PUBLIC_DATA, 'catalog.json'), JSON.stringify(catalog, null, 2) + '\n', 'utf8')
+  await writeFile(resolve(GENERATED, 'domain-catalog.json'), JSON.stringify(domainCatalog, null, 2) + '\n', 'utf8')
+  await writeFile(resolve(PUBLIC_DATA, 'domain-catalog.json'), JSON.stringify(domainCatalog, null, 2) + '\n', 'utf8')
   await writeFile(resolve(GENERATED, 'validation-report.json'), JSON.stringify({ ...validation, source: catalog.source, checkedAt: new Date().toISOString() }, null, 2) + '\n', 'utf8')
   await writeFile(resolve(PUBLIC_DATA, 'validation-report.json'), JSON.stringify({ ...validation, source: catalog.source, checkedAt: new Date().toISOString() }, null, 2) + '\n', 'utf8')
   if (!validation.valid) throw new Error('Validation failed: ' + validation.errors.join('; '))
