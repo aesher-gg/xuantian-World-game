@@ -56,22 +56,16 @@ npm run build
 
 The canonical index describes 10 major regions and systems for cultivation, professions, farming, beast taming, airships, economy, vitality, combat, bestiary, factions, events and special items.
 
-The controlled import pipeline will:
-1. fetch source Markdown from the canonical repository;
-2. preserve immutable source snapshots and blob SHAs;
-3. parse into versioned JSON schemas;
-4. validate required fields and cross-references;
-5. report ambiguities or contradictory rules;
-6. ship only validated derived data into runtime.
+The importer is implemented in `scripts/import-world-bible.mjs`. Run `npm run import:world-bible` to fetch the full index, every indexed Markdown module, and the starter-character catalog from the canonical repository. It verifies every download against the Git blob SHA in the source tree, stores immutable copies under `world-bible/snapshots/`, and writes `world-bible/generated/catalog.json` plus `validation-report.json`.
 
-Never silently rewrite contradictions or invent missing formulas. Player save data is always separate from character templates and canon source.
+The catalog retains provenance, headings, section text, tables, fenced formulas/code blocks and cross-references. Its JSON contract is in `world-bible/schema/catalog.schema.json`; parser/validator tests run with `npm test`. The importer only reads the source repository. It does not silently rewrite contradictions or invent missing mechanics; ambiguous rules remain visible for review. Player saves remain separate from canon.
 
 ## Milestones
 
 - [x] Separate game repository and architecture contract.
 - [x] Initial React/TypeScript browser prototype and local deterministic gameplay loop.
 - [ ] M1 — automated build verification and tests for simulation rules.
-- [ ] M2 — World Bible ingestion, validation and normalized data catalog.
+- [x] M2 foundation — importer, source-SHA verification, immutable snapshots, JSON catalog schema, validation report and parser tests (full source sync runs with `npm run import:world-bible`).
 - [ ] M3 — persistent NPC schedules, needs, relationships and autonomous legal actions.
 - [ ] M4 — AI dialogue and bounded NPC planning adapters.
 - [ ] M5 — async image generation, asset registry, caching and fallback art.
