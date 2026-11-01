@@ -33,7 +33,7 @@ Implemented in this repository:
 - Deterministic formula functions for cultivation, farming, taming, alchemy, airships, economy, vitality and combat
 - Formula tests, source discrepancy notes and CI validation pipeline
 
-Still pending: first successful full World Bible snapshot sync in CI; automated extraction of all herb/beast rows from the imported modules; formula parity for every sub-system; seeded combat/loot rolls; complete UI integration; NPC autonomy; AI providers; and production persistence. Unspecified modifiers are explicit function inputs, not guessed constants.
+Still pending: formula parity for every sub-system; seeded combat/loot rolls; full UI integration of all 10 regions and the 200 herbs/344 beasts; NPC autonomy; AI providers; and production persistence. Unspecified modifiers are explicit function inputs, not guessed constants.
 
 ## Architecture
 
@@ -64,9 +64,8 @@ The domain extraction retains all official tables for the 200-herb and bestiary 
 
 - [x] Separate game repository and architecture contract.
 - [x] Initial React/TypeScript browser prototype and local deterministic gameplay loop.
-- [x] M1 foundation — CI build pipeline and parser/formula unit tests (latest CI run must pass before release).
-- [x] M2 foundation — importer, source-SHA verification, immutable snapshots, JSON catalog schema, validation report and normalized domain extractor.
-- [ ] M2 completion — first successful CI run that stores all source snapshots and complete herb/bestiary extracts.
+- [x] M1 — CI build pipeline and parser/formula unit tests (10/10 passed).
+- [x] M2 — importer, source-SHA verification, immutable snapshots, validated JSON catalog, domain extraction and successful CI sync (52 modules, 200 herbs, 344 beasts, 37 formula records).
 - [ ] M3 — finish formula parity, seeded random outcomes and apply every domain formula to gameplay actions.
 - [ ] M3 — persistent NPC schedules, needs, relationships and autonomous legal actions.
 - [ ] M4 — AI dialogue and bounded NPC planning adapters.
