@@ -16,4 +16,11 @@ export interface DomainCatalog {
   vitality: { formulas: string[]; source: string }
   combat: { formulas: string[]; source: string }
   bestiary: { tiers: number; source: string; dropFormula: string; coverage: string }
+  coverage: { regionCount:number; realmCount:number; spiritualRootCount:number; professionCount:number; herbCount:number; expectedHerbCount:number; herbCatalogComplete:boolean; beastRecordCount:number; formulaCount:number }
+  herbCatalog: Array<{ source:string; sourceBlobSha:string; sourceLine:number; section:string|null; fields:Record<string,string> }>
+  beastCatalog: Array<{ source:string; sourceBlobSha:string; sourceLine:number; section:string|null; fields:Record<string,string> }>
+  formulaRegistry: Array<{ source:string; sourceBlobSha:string; startLine:number; section?:string; expression:string }>
+  regionSourceData: Array<{ id:string; source:string; sourceBlobSha:string|null; title:string; headings:unknown[]; tables:unknown[]; sections:unknown[] }>
+  economyTables: unknown[]
+  completenessWarnings: string[]
 }
