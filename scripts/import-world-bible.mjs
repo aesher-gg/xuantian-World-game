@@ -7,6 +7,7 @@ export const SOURCE_BRANCH = 'main'
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const SNAPSHOTS = resolve(ROOT, 'world-bible/snapshots')
 const GENERATED = resolve(ROOT, 'world-bible/generated')
+const PUBLIC_DATA = resolve(ROOT, 'public/data/world-bible')
 export function gitBlobSha(content) {
   const bytes = Buffer.from(content, 'utf8')
   return createHash('sha1').update(Buffer.concat([Buffer.from('blob ' + bytes.length + '\0'), bytes])).digest('hex')
@@ -88,11 +89,13 @@ export async function runImport() {
     modules: imported.map((x) => ({ id: x.entry.id, moduleLabel: x.entry.moduleLabel, path: x.entry.path, description: x.entry.description, title: x.parsed.title, blobSha: x.blobSha, lineCount: x.parsed.lineCount, headings: x.parsed.headings, sections: x.parsed.sections, tables: x.parsed.tables, codeBlocks: x.parsed.codeBlocks, formulaBlocks: x.parsed.formulaBlocks, references: x.parsed.references }))
   }
   const validation = validateCatalog(catalog)
-  await mkdir(SNAPSHOTS, { recursive: true }); await mkdir(GENERATED, { recursive: true })
+  await mkdir(SNAPSHOTS, { recursive: true }); await mkdir(GENERATED, { recursive: true }); await mkdir(PUBLIC_DATA, { recursive: true })
   await writeFile(resolve(SNAPSHOTS, 'INDEX.md'), index, 'utf8')
   for (const item of imported) { const target = resolve(SNAPSHOTS, item.entry.path); await mkdir(dirname(target), { recursive: true }); await writeFile(target, item.markdown, 'utf8') }
   await writeFile(resolve(GENERATED, 'catalog.json'), JSON.stringify(catalog, null, 2) + '\n', 'utf8')
+  await writeFile(resolve(PUBLIC_DATA, 'catalog.json'), JSON.stringify(catalog, null, 2) + '\n', 'utf8')
   await writeFile(resolve(GENERATED, 'validation-report.json'), JSON.stringify({ ...validation, source: catalog.source, checkedAt: new Date().toISOString() }, null, 2) + '\n', 'utf8')
+  await writeFile(resolve(PUBLIC_DATA, 'validation-report.json'), JSON.stringify({ ...validation, source: catalog.source, checkedAt: new Date().toISOString() }, null, 2) + '\n', 'utf8')
   if (!validation.valid) throw new Error('Validation failed: ' + validation.errors.join('; '))
   console.log('Imported ' + validation.moduleCount + ' official modules; ' + validation.warnings.length + ' cross-reference warning(s).')
   console.log('Source commit: ' + catalog.source.commitSha + '; source policy: read-only.')
