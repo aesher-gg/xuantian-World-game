@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Activity, BookOpen, Clock3, CloudFog, Coins, Compass, Leaf, Moon, Mountain, ScrollText, Sparkles, Sword, UserRound, Wheat, Zap } from 'lucide-react'
+import { BookOpen, Clock3, CloudFog, Coins, Compass, Leaf, Moon, Mountain, ScrollText, Sparkles, Sword, UserRound, Wheat, Zap } from 'lucide-react'
 import { initialState } from './domain/initialState'
 import { advanceTime, cultivate, harvestHerb, plantHerb, rest } from './domain/simulation'
 import type { GameSnapshot } from './domain/types'
