@@ -1,6 +1,9 @@
 export interface PlayerState {
   name: string
   realm: string
+  realmIndex: number
+  comprehensionLevel: number
+  spiritStoneGatheringBonus: number
   stage: 'Awal' | 'Tengah' | 'Puncak'
   qi: number
   qiCap: number
