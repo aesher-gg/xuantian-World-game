@@ -2,7 +2,7 @@ import type { GameSnapshot } from './types'
 
 export const initialState: GameSnapshot = {
   version: 1,
-  player: { name: 'Xuan Yu', realm: 'Lingquan Jing', stage: 'Awal', qi: 120, qiCap: 500, hp: 180, maxHp: 180, stamina: 90, hunger: 12, spiritStones: 8, locationId: 'qingling-village', cultivationMinutes: 0 },
+  player: { name: 'Xuan Yu', realm: 'Lingquan Jing', realmIndex: 1, stage: 'Awal', qi: 60, qiCap: 100, comprehensionLevel: 0, spiritStoneGatheringBonus: 1, hp: 180, maxHp: 180, stamina: 90, hunger: 12, spiritStones: 8, locationId: 'qingling-village', cultivationMinutes: 0 },
   world: { day: 1, hour: 7, minute: 0, weather: 'Kabut pagi', woodQi: 1.25, eventLog: ['Hari baru dimulai di Desa Qingling. Kabut tipis menyelimuti kebun-kebun spirit.'] },
   herb: { name: 'Rumput Penjernih Qi', plantedAtMinute: null, growthMinutes: 0, requiredMinutes: 4320, yield: 3 },
   npcs: [
