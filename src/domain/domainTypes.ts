@@ -4,6 +4,7 @@ export interface DomainCatalog {
   schemaVersion: number
   status: string
   source: { repository: string; commitSha: string; policy: string; indexBlobSha: string }
+  sourceShas: Record<string, string>
   regions: Array<{ id: string; number: number; name: string; theme: string; locations: string[]; source: string[] }>
   cultivation: {
     realms: Array<{ index: number; id: string; name: string; qi: Record<RealmStage, number> }>
