@@ -31,6 +31,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: npm run import:world-bible
+      - name: Validate canonical operational mappings
+        run: npm run validate:operational-data
       - name: Build web game
         run: npm run build
       - name: Commit verified snapshots and JSON catalog
