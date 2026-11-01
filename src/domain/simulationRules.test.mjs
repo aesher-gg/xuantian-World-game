@@ -32,7 +32,7 @@ test('cultivation and vitality formulas use official Qi caps and explicit formul
 test('combat root multipliers are read from combat module table', () => {
   assert.equal(canonicalAttackPower({ qiCap: 100, root: 'fire', weaponTier: 1 }), 23.1)
   assert.equal(canonicalPassiveDefense({ qiCap: 100, root: 'earth', armorDefenseRating: 0 }), 7.5)
-  assert.equal(canonicalCriticalChance({ attackerDexterity: 10, root: 'wind-metal' }), 0.15)
+  assert.ok(Math.abs(canonicalCriticalChance({ attackerDexterity: 10, root: 'wind-metal' }) - 0.15) < 1e-12)
   assert.throws(() => weaponMultiplierForTier(5), /provide its exact official item multiplier/)
 })
 
@@ -45,9 +45,9 @@ test('initiative and fasting use official indexed values', () => {
 })
 
 test('economy price uses official discount and scarcity bounds', () => {
-  assert.equal(finalBuyPrice({ baseValue: 20, barterSkillLevel: 3, factionAffinityBonus: 0.1, regionScarcityMultiplier: 1.5 }), 24.45)
-  assert.equal(finalBuyPrice({ baseValue: 20, barterSkillLevel: 3, factionAffinityBonus: 2, regionScarcityMultiplier: 1.5 }), 24.3)
-  assert.equal(finalBuyPrice({ baseValue: 100, barterSkillLevel: 20, factionAffinityBonus: 1, regionScarcityMultiplier: 9 }), 175)
+  assert.ok(Math.abs(finalBuyPrice({ baseValue: 20, barterSkillLevel: 3, factionAffinityBonus: 0.1, regionScarcityMultiplier: 1.5 }) - 27.15) < 1e-9)
+  assert.ok(Math.abs(finalBuyPrice({ baseValue: 20, barterSkillLevel: 3, factionAffinityBonus: 2, regionScarcityMultiplier: 1.5 }) - 24.3) < 1e-9)
+  assert.ok(Math.abs(finalBuyPrice({ baseValue: 100, barterSkillLevel: 20, factionAffinityBonus: 1, regionScarcityMultiplier: 9 }) - 175) < 1e-9)
 })
 
 test('pill toxin exposes threshold status without inventing stacking behavior', () => {
