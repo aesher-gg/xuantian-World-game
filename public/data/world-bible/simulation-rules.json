@@ -1,0 +1,1530 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "repository": "aesher-gg/Xuantian-World",
+    "commitSha": "1b6dbd0bc6cb33ce0db528d9d050a0f44fd2873a",
+    "policy": "read-only",
+    "sourceIndexBlobSha": "6bfc4196924d46ee2eb1fa7a2f1d1de405f721e3",
+    "importedAt": "2026-11-01T12:53:09.418Z",
+    "moduleShas": {
+      "00_CORE_RULES_AI_GM.md": "f340b9be97d54893dad3beb6c7c50718cbae19c8",
+      "01_WORLD_OVERVIEW_AND_CAPITAL.md": "7d8f8e552f20678fd17e405e5aab85447edb86b5",
+      "13_SPIRITUAL_ROOT_SYSTEM.md": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae",
+      "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md": "c396bd331c14fd8ce3ff40ee546f5ee37f51c642",
+      "15_SPIRITUAL_HERB_FARMING_SYSTEM.md": "2481f7011caa829157c5ea24e4c5920e0fcf62c1",
+      "16_BEAST_TAMING_SYSTEM.md": "de70f4a2817dcd506a274bc3dcd5538b9131ce01",
+      "17_AIRSHIP_NAVIGATION_SYSTEM.md": "ab75457146c452d28d93ebc499f2f3e07173436b",
+      "18_ECONOMY_SYSTEM.md": "afaf9bf69f5274dea47bc1997ae48583f405fde2",
+      "19_VITALITY_HUNGER_SYSTEM.md": "54391dbd8f425bebecbb6a71d8c1fccfbc194092",
+      "20_COMBAT_SYSTEM.md": "6395774f887c6292c49d68e72a322fdd701f67f2",
+      "21_BESTIARY.md": "b5d8ca9292930699f62347c58c0a710cfa8702c3"
+    }
+  },
+  "world": {
+    "regions": [
+      {
+        "id": "shenmu",
+        "number": 2,
+        "name": "Shenmu Zhou",
+        "theme": "Kayu, alam, Shenmu, berkebun",
+        "locations": [
+          "Kota Shenmu",
+          "Desa Qingling",
+          "Lembah Biyang",
+          "Hutan Purba Wansen",
+          "Kerajaan Spirit Elf Wanling",
+          "Dataran Abu Hijau",
+          "Hutan Bambu Giok",
+          "Sanctum Pohon Leluhur Wansen",
+          "Lembah Embun Spirit",
+          "Rawa Spora Merah"
+        ],
+        "source": [
+          "INDEX.md",
+          "02_SHENMU_ZHOU.md"
+        ]
+      },
+      {
+        "id": "zhonghua",
+        "number": 3,
+        "name": "Zhonghua Zhou",
+        "theme": "Dataran tengah dan pusat kekaisaran",
+        "locations": [
+          "Kota Tianjing",
+          "Kota Luoyang",
+          "Desa Xingcun",
+          "Lembah Medan Perang Kuno",
+          "Dataran Makam Kekaisaran",
+          "Taman Bunga Terlarang Sembilan Naga",
+          "Lembah Kertas & Kuas Kaligrafi"
+        ],
+        "source": [
+          "INDEX.md",
+          "03_ZHONGHUA_ZHOU.md"
+        ]
+      },
+      {
+        "id": "canglong",
+        "number": 4,
+        "name": "Canglong Zhou",
+        "theme": "Pegunungan pedang",
+        "locations": [
+          "Kota Canglong",
+          "Desa Qingfeng",
+          "Lembah Pedang Berbisik",
+          "Puncak Tebasan Naga",
+          "Ngarai Bambu Pedang",
+          "Danau Pedang Tenggelam",
+          "Desa Penempa Bintang Tebing"
+        ],
+        "source": [
+          "INDEX.md",
+          "04_CANGLONG_ZHOU.md"
+        ]
+      },
+      {
+        "id": "chiyan",
+        "number": 5,
+        "name": "Chiyan Zhou",
+        "theme": "Gunung berapi dan forging",
+        "locations": [
+          "Kota Shendu",
+          "Desa Chishui",
+          "Puncak Danhuang",
+          "Lembah Meteorit Merah",
+          "Gua Lava Hitam",
+          "Kawah Kristal Api Purba",
+          "Perkampungan Kuali Spirit"
+        ],
+        "source": [
+          "INDEX.md",
+          "05_CHIYAN_ZHOU.md"
+        ]
+      },
+      {
+        "id": "canghai",
+        "number": 6,
+        "name": "Canghai Zhou",
+        "theme": "Kepulauan dan lautan",
+        "locations": [
+          "Kota Pelabuhan Haibin",
+          "Kepulauan Xingluo",
+          "Palung Laut Bintang Giok",
+          "Kepulauan Mutiara Purba",
+          "Tembok Es Samudra",
+          "Pulau Terumbu Karang Giok",
+          "Galangan Kapal Bintang Laut"
+        ],
+        "source": [
+          "INDEX.md",
+          "06_CANGHAI_ZHOU.md"
+        ]
+      },
+      {
+        "id": "xixuan",
+        "number": 7,
+        "name": "Xixuan Zhou",
+        "theme": "Gurun dan talisman",
+        "locations": [
+          "Kota Huangsha",
+          "Reruntuhan Kuil Moko",
+          "Oasis Ganlu",
+          "Labirin Batu Pasir Purba",
+          "Ngarai Inskripsi Rune",
+          "Perkampungan Penjinak Unta"
+        ],
+        "source": [
+          "INDEX.md",
+          "07_XIXUAN_ZHOU.md"
+        ]
+      },
+      {
+        "id": "beihan",
+        "number": 8,
+        "name": "Beihan Zhou",
+        "theme": "Padang es dan alkimia es",
+        "locations": [
+          "Kota Hanbing",
+          "Lembah Xueyuan",
+          "Gua Kristal Es Abadi",
+          "Puncak Es Abadi",
+          "Danau Es Cermin Jiwa",
+          "Perkampungan Kereta Sled"
+        ],
+        "source": [
+          "INDEX.md",
+          "08_BEIHAN_ZHOU.md"
+        ]
+      },
+      {
+        "id": "youming",
+        "number": 9,
+        "name": "Youming Zhou",
+        "theme": "Iblis, bayangan, racun",
+        "locations": [
+          "Kota Heian",
+          "Rawa Racun Duwu",
+          "Bukit Tengkorak Hitam",
+          "Lembah Kabut Kelam",
+          "Pasar Malam Bayangan",
+          "Perkampungan Jarum Racun"
+        ],
+        "source": [
+          "INDEX.md",
+          "09_YOUMING_ZHOU.md"
+        ]
+      },
+      {
+        "id": "tiangong",
+        "number": 10,
+        "name": "Tiangong Zhou",
+        "theme": "Airship dan kota melayang",
+        "locations": [
+          "Benteng Melayang Tiangong",
+          "Galangan Shenhang",
+          "Dermaga Levitasi Awan",
+          "Menara Navigasi Bintang",
+          "Anjungan Batu Bintang",
+          "Akademi Pilot Pemula"
+        ],
+        "source": [
+          "INDEX.md",
+          "10_TIANGONG_ZHOU.md"
+        ]
+      },
+      {
+        "id": "juejing",
+        "number": 11,
+        "name": "Juejing Zhou",
+        "theme": "Zona terlarang dan anomali ruang",
+        "locations": [
+          "Pos Depan Juejing",
+          "Lembah Retakan Ruang",
+          "Jurang Anomali Petir Tanah",
+          "Reruntuhan Medan Perang Purba",
+          "Ngarai Kristal Ruang",
+          "Kamp Penjelajah Veteran"
+        ],
+        "source": [
+          "INDEX.md",
+          "11_JUEJING_ZHOU.md"
+        ]
+      }
+    ],
+    "regionCount": 10,
+    "source": {
+      "path": "01_WORLD_OVERVIEW_AND_CAPITAL.md",
+      "line": 72,
+      "blobSha": "7d8f8e552f20678fd17e405e5aab85447edb86b5"
+    }
+  },
+  "cultivation": {
+    "realms": [
+      {
+        "index": 1,
+        "id": "lingquan",
+        "name": "Lingquan Jing",
+        "qi": {
+          "early": 100,
+          "middle": 150,
+          "peak": 200
+        }
+      },
+      {
+        "index": 2,
+        "id": "kaimai",
+        "name": "Kaimai Jing",
+        "qi": {
+          "early": 500,
+          "middle": 750,
+          "peak": 1000
+        }
+      },
+      {
+        "index": 3,
+        "id": "ningyuan",
+        "name": "Ningyuan Jing",
+        "qi": {
+          "early": 2500,
+          "middle": 3750,
+          "peak": 5000
+        }
+      },
+      {
+        "index": 4,
+        "id": "lingyi",
+        "name": "Lingyi Jing",
+        "qi": {
+          "early": 12500,
+          "middle": 18750,
+          "peak": 25000
+        }
+      },
+      {
+        "index": 5,
+        "id": "xuantian",
+        "name": "Xuantian Jing",
+        "qi": {
+          "early": 62500,
+          "middle": 93750,
+          "peak": 125000
+        }
+      },
+      {
+        "index": 6,
+        "id": "tongtian",
+        "name": "Tongtian Jing",
+        "qi": {
+          "early": 312500,
+          "middle": 468750,
+          "peak": 625000
+        }
+      },
+      {
+        "index": 7,
+        "id": "faxiang",
+        "name": "Faxiang Jing",
+        "qi": {
+          "early": 1562500,
+          "middle": 2343750,
+          "peak": 3125000
+        }
+      },
+      {
+        "index": 8,
+        "id": "shenhuang",
+        "name": "Shenhuang Jing",
+        "qi": {
+          "early": 7812500,
+          "middle": 11718750,
+          "peak": 15625000
+        }
+      },
+      {
+        "index": 9,
+        "id": "hunyuan",
+        "name": "Hunyuan Jing",
+        "qi": {
+          "early": 39062500,
+          "middle": 58593750,
+          "peak": 78125000
+        }
+      }
+    ],
+    "stageMultiplier": {
+      "early": 1,
+      "middle": 1.5,
+      "peak": 2
+    },
+    "spiritualRoots": [
+      {
+        "id": "wood",
+        "name": "Kayu Abadi",
+        "hpMultiplier": 1.5,
+        "qiRegenMultiplier": 1.5
+      },
+      {
+        "id": "fire",
+        "name": "Api Purba",
+        "hpMultiplier": 0.9,
+        "qiRegenMultiplier": 0.9
+      },
+      {
+        "id": "wind-metal",
+        "name": "Angin & Logam",
+        "hpMultiplier": 1,
+        "qiRegenMultiplier": 1
+      },
+      {
+        "id": "earth",
+        "name": "Tanah & Segel",
+        "hpMultiplier": 1.4,
+        "qiRegenMultiplier": 1
+      },
+      {
+        "id": "water-ice",
+        "name": "Air & Es Purba",
+        "hpMultiplier": 1.2,
+        "qiRegenMultiplier": 1.2
+      }
+    ],
+    "qiCapFormula": "QiCap(realm, stage) = BaseQi(realm) × StageMultiplier(stage)",
+    "passiveQiRegenFormula": "QiRegenPerHour = QiCap × 0.05 × RootRegenMultiplier × EnvironmentQiModifier × (1.0 - PillToxinPercent)",
+    "meditationFormula": "MeditationQiPerMinute = (QiCap × 0.02) × (1 + ComprehensionLevel × 0.10) × SpiritStoneGatheringBonus",
+    "rootBonusesFromRootModule": [
+      {
+        "root": "wood",
+        "hpMultiplier": 1.5,
+        "defenseMultiplier": 1.2,
+        "professionGrowthBonus": 0.3,
+        "source": {
+          "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
+          "line": 83,
+          "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+        }
+      },
+      {
+        "root": "fire",
+        "attackMultiplier": 1.6,
+        "hpMultiplier": 0.9,
+        "source": {
+          "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
+          "line": 89,
+          "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+        }
+      },
+      {
+        "root": "wind-metal",
+        "attackMultiplier": 1.4,
+        "agilityBonus": 0.2,
+        "criticalHitChanceBonus": 0.2,
+        "source": {
+          "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
+          "line": 95,
+          "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+        }
+      },
+      {
+        "root": "earth",
+        "defenseMultiplier": 1.6,
+        "hpMultiplier": 1.4,
+        "source": {
+          "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
+          "line": 101,
+          "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+        }
+      },
+      {
+        "root": "water-ice",
+        "hpMultiplier": 1.2,
+        "attackMultiplier": 1.1,
+        "defenseMultiplier": 1.2,
+        "source": {
+          "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
+          "line": 107,
+          "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+        }
+      }
+    ],
+    "source": {
+      "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
+      "line": 29,
+      "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+    },
+    "qiRegen": {
+      "baseRate": 0.05
+    },
+    "meditation": {
+      "baseRate": 0.02,
+      "comprehensionBonusPerLevel": 0.1
+    }
+  },
+  "professions": [
+    {
+      "id": "herb-farming",
+      "name": "Berkebun Obat Spirit",
+      "source": "15_SPIRITUAL_HERB_FARMING_SYSTEM.md",
+      "formulas": [
+        "ActualGrowthDays = Max(1, BaseGrowthDays × SoilMultiplier × (1 - FertilizerDiscount - WoodRootBonus))",
+        "HarvestYield = BaseYield × SoilYieldMultiplier × (1 + HerbalistSkillLevel × 0.10)"
+      ],
+      "soilGrowthMultiplier": {
+        "grade1": 1,
+        "grade2": 0.75,
+        "grade3": 0.5,
+        "grade4": 0.25
+      },
+      "soilYieldMultiplier": {
+        "grade1": 1,
+        "grade2": 1.3,
+        "grade3": 1.6,
+        "grade4": 2
+      },
+      "fertilizerDiscount": 0.3,
+      "woodRootBonus": 0.3,
+      "coverage": "Formula resmi tersedia; seluruh 200 baris katalog tanaman menunggu sinkronisasi snapshot lengkap."
+    },
+    {
+      "id": "beast-taming",
+      "name": "Penjinakan Spirit Beast",
+      "source": "16_BEAST_TAMING_SYSTEM.md",
+      "formulas": [
+        "TamingSuccessChance = Clamp(30% + RealmDiffBonus + HPDepletionBonus + SealTierBonus + BaitBonus - WildnessPenalty, 5%, 95%)",
+        "EvolutionChance = Clamp(40% + BloodlinePurityBonus + EvolutionPillQualityBonus + ElementalCatalystBonus - TierJumpPenalty, 5%, 90%)"
+      ],
+      "tiers": 9,
+      "contracts": [
+        "Equal Blood Pact",
+        "Master-Servant Pact",
+        "Symbiotic Life Pact"
+      ]
+    },
+    {
+      "id": "alchemy",
+      "name": "Alkimia dan Pemurnian Pill",
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "formula": "FinalPurity = Clamp(50% + FlameQualityBonus + CauldronTier × 5% + AlchemistLevel × 3% - (PillTier - AlchemistTier) × 15%, 10%, 100%)"
+    },
+    {
+      "id": "array",
+      "name": "Formasi",
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "formula": "BarrierHP = ArrayDiscBaseHP × (1 + ArrayMasterLevel × 0.15) × EnvironmentQiMultiplier"
+    },
+    {
+      "id": "forging",
+      "name": "Penempaan",
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "formula": "WeaponDamage = BaseWeaponDamage × (1 + BlacksmithLevel × 0.08) × (1 + MetalTier × 0.10)"
+    },
+    {
+      "id": "talisman",
+      "name": "Jimat",
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "formula": "TalismanSuccessChance = Clamp(60% + (TalismanMasterLevel - TalismanTier) × 10% + PaperQualityBonus, 10%, 95%)"
+    },
+    {
+      "id": "airship",
+      "name": "Navigasi Airship",
+      "source": "17_AIRSHIP_NAVIGATION_SYSTEM.md",
+      "formula": "FinalAirshipSpeed = BaseSpeed × (1 + PilotTier × 10% + Realm3QiDriveBonus)",
+      "baseSpeedLiPerDay": {
+        "skiff": 500,
+        "freighter": 1000,
+        "galleon": 2500,
+        "battleship": 4000
+      }
+    }
+  ],
+  "herbalism": {
+    "catalogPath": "world-bible/generated/domain-catalog.json#herbCatalog",
+    "catalogCount": 200,
+    "catalogComplete": true,
+    "soilGrowthMultiplier": {
+      "grade1": 1,
+      "grade2": 0.75,
+      "grade3": 0.5,
+      "grade4": 0.25
+    },
+    "soilYieldMultiplier": {
+      "grade1": 1,
+      "grade2": 1.3,
+      "grade3": 1.6,
+      "grade4": 2
+    },
+    "fertilizerDiscount": 0.3,
+    "woodRootBonus": 0.3,
+    "growthFormula": "ActualGrowthDays = Max(1, BaseGrowthDays × SoilMultiplier × (1 - FertilizerDiscount - WoodRootBonus))",
+    "harvestFormula": "HarvestYield = BaseYield × SoilYieldMultiplier × (1 + HerbalistSkillLevel × 0.10)",
+    "source": {
+      "path": "15_SPIRITUAL_HERB_FARMING_SYSTEM.md",
+      "line": 24,
+      "blobSha": "2481f7011caa829157c5ea24e4c5920e0fcf62c1"
+    }
+  },
+  "beastTaming": {
+    "catalogPath": "world-bible/generated/domain-catalog.json#beastCatalog",
+    "beastRecordCount": 344,
+    "tiers": 9,
+    "taming": {
+      "baseChance": 0.3,
+      "realmDifferencePerRank": 0.1,
+      "hpDepletionFactor": 0.4,
+      "sealTierBonusPerTier": 0.1,
+      "preferredBaitBonus": 0.15,
+      "wildnessPenaltyPerBeastTier": 0.05,
+      "minChance": 0.05,
+      "maxChance": 0.95,
+      "formula": "Clamp(30% + RealmDiffBonus + HPDepletionBonus + SealTierBonus + BaitBonus - WildnessPenalty, 5%, 95%)",
+      "source": {
+        "path": "16_BEAST_TAMING_SYSTEM.md",
+        "line": 45,
+        "blobSha": "de70f4a2817dcd506a274bc3dcd5538b9131ce01"
+      }
+    },
+    "evolution": {
+      "baseChance": 0.4,
+      "bloodlinePurityFactor": 0.3,
+      "elementalCatalystBonus": 0.15,
+      "tierJumpPenaltyPerTier": 0.25,
+      "minChance": 0.05,
+      "maxChance": 0.9,
+      "pillQualityBonus": {
+        "low": 0.05,
+        "mid": 0.15,
+        "high": 0.25,
+        "perfect": 0.35
+      },
+      "formula": "Clamp(40% + BloodlinePurityBonus + EvolutionPillQualityBonus + ElementalCatalystBonus - TierJumpPenalty, 5%, 90%)",
+      "source": {
+        "path": "16_BEAST_TAMING_SYSTEM.md",
+        "line": 104,
+        "blobSha": "de70f4a2817dcd506a274bc3dcd5538b9131ce01"
+      }
+    },
+    "constraints": [
+      "No instant taming; a chance roll is required.",
+      "Beast evolution cannot skip more than one tier.",
+      "Evolution to Tier 6 or higher requires Lightning Tribulation.",
+      "Loyalty and hunger persist.",
+      "Tier 3+ beast requires registry origin."
+    ],
+    "loyalty": {
+      "gainPerFeeding": "5 + (AlchemistPillQuality × 2)",
+      "battleDefeatLoss": 15,
+      "starvationLossPerDay": 10,
+      "source": {
+        "path": "16_BEAST_TAMING_SYSTEM.md",
+        "line": 74,
+        "blobSha": "de70f4a2817dcd506a274bc3dcd5538b9131ce01"
+      }
+    },
+    "contracts": [
+      "Equal Blood Pact",
+      "Master-Servant Pact",
+      "Symbiotic Life Pact"
+    ],
+    "source": {
+      "path": "16_BEAST_TAMING_SYSTEM.md",
+      "line": 20,
+      "blobSha": "de70f4a2817dcd506a274bc3dcd5538b9131ce01"
+    }
+  },
+  "economy": {
+    "currency": [
+      "Copper Tael (CT)",
+      "Silver Tael (ST)",
+      "Jade Tael (JT)",
+      "Low Spirit Stone (LSS)",
+      "Middle Spirit Stone (MSS)",
+      "High Spirit Stone (HSS)",
+      "Ascendant Spirit Stone (ASS)"
+    ],
+    "formulas": [
+      "FinalBuyPrice = ItemBaseValue × DiscountModifier × RegionScarcityMultiplier",
+      "PlayerSellValue = ItemBaseValue × 0.50 × (1 + BarterSkillLevel × 0.05)",
+      "AuctionCommission = FinalBidAmount × (0.10 - YouxiaRankBonus × 0.01)"
+    ],
+    "buy": {
+      "discountModifierFormula": "1.0 - (BarterSkillLevel × 0.03) - (FactionAffinityBonus × 0.05)",
+      "maxDiscount": 0.3,
+      "minDiscountModifier": 0.7,
+      "minScarcityMultiplier": 0.5,
+      "maxScarcityMultiplier": 2.5,
+      "formula": "FinalBuyPrice = ItemBaseValue × DiscountModifier × RegionScarcityMultiplier",
+      "source": {
+        "path": "18_ECONOMY_SYSTEM.md",
+        "line": 51,
+        "blobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2"
+      }
+    },
+    "sell": {
+      "formula": "PlayerSellValue = ItemBaseValue × 0.50 × (1 + (BarterSkillLevel × 0.05))",
+      "source": {
+        "path": "18_ECONOMY_SYSTEM.md",
+        "line": 71,
+        "blobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2"
+      }
+    },
+    "auction": {
+      "formula": "AuctionCommission = FinalBidAmount × (0.10 - (YouxiaRankBonus × 0.01)); SellerPayout = FinalBidAmount - AuctionCommission",
+      "source": {
+        "path": "18_ECONOMY_SYSTEM.md",
+        "line": 80,
+        "blobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2"
+      }
+    },
+    "barterNegotiationCap": 0.15,
+    "transactionTimestampRequired": true,
+    "itemOriginLogRequiredFromTier": 3,
+    "tables": [
+      {
+        "headers": [
+          "Komoditas / Bahan",
+          "Grade / Tier",
+          "Base Price",
+          "Wilayah Produsen Utama (Scarcity 0.5×)"
+        ],
+        "rows": [
+          [
+            "Benih Lingzhi Hijau",
+            "Tier 1",
+            "5 ST",
+            "Shenmu Zhou (2.5 ST)"
+          ],
+          [
+            "Benih Rumput Qi Yuan",
+            "Tier 2",
+            "2 JT",
+            "Shenmu Zhou (1 JT)"
+          ],
+          [
+            "Benih Lotus Es Abadi",
+            "Tier 4",
+            "20 LSS",
+            "Beihan Zhou (10 LSS)"
+          ],
+          [
+            "Benih Ginseng Naga Purba",
+            "Tier 7",
+            "50 MSS",
+            "Shenmu Zhou (25 MSS)"
+          ],
+          [
+            "Pupuk Qi Kayu Shenmu",
+            "Grade 2 Soil",
+            "50 ST / karung",
+            "Lembah Biyang (25 ST)"
+          ],
+          [
+            "Ingot Besi Spirit (Spirit Iron)",
+            "Tier 1–3",
+            "1 JT / ingot",
+            "Chiyan Zhou (0.5 JT)"
+          ],
+          [
+            "Bijih Besi Meteorit Merah",
+            "Tier 4–6",
+            "10 LSS / ingot",
+            "Shendu / Chiyan (5 LSS)"
+          ],
+          [
+            "Kertas Sutra Jimat Kosong",
+            "Tier 1–3",
+            "1 ST / lembar",
+            "Xixuan Zhou (0.5 ST)"
+          ],
+          [
+            "Botol Bisa Ular Rawa",
+            "Tier 2–4",
+            "5 ST / botol",
+            "Youming Zhou (2.5 ST)"
+          ]
+        ],
+        "startLine": 90
+      },
+      {
+        "headers": [
+          "Jenis Rute / Moda Feichuan",
+          "Kapasitas Moda",
+          "Harga Tiket Standard",
+          "Durasi Tempuh Lintas Wilayah"
+        ],
+        "rows": [
+          [
+            "**Lokal Antar-Kota** *(Skiff)*",
+            "1–3 Penumpang",
+            "1–3 JT",
+            "2–6 Jam"
+          ],
+          [
+            "**Lintas Wilayah Tetangga** *(Galleon)*",
+            "50–100 Penumpang",
+            "15 LSS",
+            "12–15 Jam"
+          ],
+          [
+            "**Lintas Wilayah Jauh** *(Heavy Galleon)*",
+            "200+ Penumpang",
+            "28 LSS",
+            "22–26 Jam"
+          ],
+          [
+            "**Rute Zona Terlarang** *(Warship)*",
+            "Pasukan Pengawal",
+            "100 LSS",
+            "36 Jam (Sangat Berbahaya)"
+          ]
+        ],
+        "startLine": 103
+      },
+      {
+        "headers": [
+          "Item / Beast",
+          "Tier / Rank",
+          "Harga Pasar Standard",
+          "Pemasok Utama"
+        ],
+        "rows": [
+          [
+            "Jimat Penjinak Beast Pemula",
+            "Tier 1",
+            "1 LSS",
+            "Perguruan Qingling / Guild"
+          ],
+          [
+            "Jimat Penjinak Beast Master",
+            "Tier 3",
+            "20 LSS",
+            "Perguruan Qingling / Guild"
+          ],
+          [
+            "Egg Spirit Beast Unggas Hutan",
+            "Tier 1 Beast",
+            "5 LSS",
+            "Desa Qingling (Shenmu)"
+          ],
+          [
+            "Egg Serigala Bayangan Kabut",
+            "Tier 2 Beast",
+            "15 LSS",
+            "Desa Qingling (Shenmu)"
+          ],
+          [
+            "Egg Spirit Beast Serigala Es",
+            "Tier 3 Beast",
+            "50 LSS",
+            "Kota Hanbing (Beihan)"
+          ],
+          [
+            "Egg Spirit Beast Dragonblood",
+            "Tier 6 Beast",
+            "10 HSS",
+            "Wanbao Auction House"
+          ]
+        ],
+        "startLine": 111
+      }
+    ],
+    "source": {
+      "path": "18_ECONOMY_SYSTEM.md",
+      "line": 27,
+      "blobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2"
+    }
+  },
+  "vitality": {
+    "formulas": [
+      "MaxHP = RealmBaseQiCap × StageMultiplier × 0.40 × SpiritualRootHPMultiplier × (1 + BodyFortificationBonus)",
+      "HPRegenPerHour = MaxHP × 0.05 × RootRegenMultiplier × EnvironmentQiMultiplier",
+      "SatietyDropPerHour = 10% / FastingMultiplier(realm)",
+      "CurrentToxinPercent = Clamp(PreviousToxin + ConsumedPillToxin, 0%, 100%)"
+    ],
+    "maxHp": {
+      "formula": "MaxHP = RealmBaseQiCap × StageMultiplier × 0.40 × SpiritualRootHPMultiplier × (1 + BodyFortificationBonus)",
+      "baseFactor": 0.4,
+      "source": {
+        "path": "19_VITALITY_HUNGER_SYSTEM.md",
+        "line": 31,
+        "blobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092"
+      }
+    },
+    "hpRegen": {
+      "formula": "HPRegenPerHour = MaxHP × 0.05 × RootRegenMultiplier × EnvironmentQiMultiplier",
+      "baseRate": 0.05,
+      "source": {
+        "path": "19_VITALITY_HUNGER_SYSTEM.md",
+        "line": 66,
+        "blobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092"
+      }
+    },
+    "fasting": {
+      "formula": "SatietyDropPerHour = 10% / FastingMultiplier(realm)",
+      "values": [
+        {
+          "realmIndex": 1,
+          "multiplier": 2
+        },
+        {
+          "realmIndex": 2,
+          "multiplier": 7.2
+        },
+        {
+          "realmIndex": 3,
+          "multiplier": 33.6
+        },
+        {
+          "realmIndex": 4,
+          "multiplier": 72
+        },
+        {
+          "realmIndex": 5,
+          "multiplier": null
+        },
+        {
+          "realmIndex": 6,
+          "multiplier": null
+        },
+        {
+          "realmIndex": 7,
+          "multiplier": null
+        },
+        {
+          "realmIndex": 8,
+          "multiplier": null
+        },
+        {
+          "realmIndex": 9,
+          "multiplier": null
+        }
+      ],
+      "realm5To9AreImmune": true,
+      "source": {
+        "path": "19_VITALITY_HUNGER_SYSTEM.md",
+        "line": 79,
+        "blobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092"
+      }
+    },
+    "satietyEffects": [
+      {
+        "min": 26,
+        "max": 100,
+        "effect": "normal"
+      },
+      {
+        "min": 11,
+        "max": 25,
+        "staminaRegenMultiplier": 0.7,
+        "movementSpeedMultiplier": 0.9,
+        "effect": "light-fatigue"
+      },
+      {
+        "min": 1,
+        "max": 10,
+        "attackPowerMultiplier": 0.75,
+        "skillQiCostMultiplier": 1.2,
+        "effect": "severe-hunger"
+      },
+      {
+        "min": 0,
+        "max": 0,
+        "hpLossPerHourMaxHpFraction": 0.05,
+        "effect": "extreme-hunger"
+      }
+    ],
+    "toxins": {
+      "formula": "CurrentToxinPercent = Clamp(PreviousToxin + ConsumedPillToxin, 0%, 100%)",
+      "qiRegenThreshold": 0.3,
+      "qiRegenPenaltyAtThreshold": 0.3,
+      "breakthroughPenaltyThreshold": 0.6,
+      "breakthroughChancePenalty": 0.3,
+      "tribulationDamageIncrease": 0.2,
+      "absorptionBlockedAt": 1,
+      "naturalCleansingPer24HourMeditation": 0.05,
+      "source": {
+        "path": "19_VITALITY_HUNGER_SYSTEM.md",
+        "line": 105,
+        "blobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092"
+      }
+    },
+    "source": {
+      "path": "19_VITALITY_HUNGER_SYSTEM.md",
+      "line": 27,
+      "blobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092"
+    }
+  },
+  "combat": {
+    "initiative": {
+      "formula": "InitiativeScore = (RealmIndex × 100) + StageBonus + RootSpeedBonus + EquipmentSpeedBonus + Random(1–20)",
+      "stageBonus": {
+        "early": 0,
+        "middle": 10,
+        "peak": 20
+      },
+      "rootSpeedBonus": {
+        "wind-metal": 15,
+        "default": 0
+      },
+      "randomMin": 1,
+      "randomMax": 20,
+      "realmIndexLabelConflict": true,
+      "source": {
+        "path": "20_COMBAT_SYSTEM.md",
+        "line": 31,
+        "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
+      },
+      "realmIndexMultiplier": 100
+    },
+    "actionEconomy": {
+      "mainActions": 1,
+      "minorActions": 1,
+      "movementActions": 1,
+      "source": {
+        "path": "20_COMBAT_SYSTEM.md",
+        "line": 45,
+        "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
+      }
+    },
+    "movement": {
+      "groundLiPerTurn": 20,
+      "airLiPerTurn": 40,
+      "source": {
+        "path": "20_COMBAT_SYSTEM.md",
+        "line": 49,
+        "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
+      }
+    },
+    "rootMultipliers": {
+      "attack": {
+        "wood": 1,
+        "fire": 1.4,
+        "wind-metal": 1.25,
+        "earth": 0.9,
+        "water-ice": 1
+      },
+      "defense": {
+        "wood": 1.2,
+        "fire": 1,
+        "wind-metal": 1,
+        "earth": 1.5,
+        "water-ice": 1.2
+      },
+      "criticalChanceBonus": {
+        "wind-metal": 0.05,
+        "default": 0
+      },
+      "source": {
+        "path": "20_COMBAT_SYSTEM.md",
+        "line": 61,
+        "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
+      }
+    },
+    "weaponMultipliers": {
+      "tier1": 1.1,
+      "tier2": 1.25,
+      "tier3": 1.4,
+      "tier4": 1.6,
+      "tier5PlusMinimum": 2,
+      "source": {
+        "path": "20_COMBAT_SYSTEM.md",
+        "line": 68,
+        "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
+      },
+      "tier5PlusNote": "2.0x+; exact value is item-defined and must be supplied explicitly"
+    },
+    "attackFormula": "AttackPower = CharacterQiCap × 0.15 × SpiritualRootAttackMultiplier × WeaponMultiplier × (1 + WeaponSoulBindingBonus)",
+    "defenseFormula": "PassiveDefense = CharacterQiCap × 0.05 × SpiritualRootDefenseMultiplier + ArmorDefenseRating",
+    "hitFormula": "FinalHitChance = Clamp(70% + (AttackerRealmIndex - DefenderRealmIndex) × 5% - DodgePenalty + AccuracyBonus, 10%, 95%)",
+    "critFormula": "CritChance = 5% + (AttackerDexterity × 0.5%) + WindMetalRootBonus (5%)",
+    "damageFormula": "FinalDamage = Max(1, ((AttackPower × SkillMultiplier) - PassiveDefense) × IsCrit)",
+    "statusEffects": [
+      {
+        "id": "burn",
+        "damagePerTurnMaxHpFraction": 0.05,
+        "durationTurns": 3,
+        "cures": [
+          "Water spell",
+          "Antidote pill",
+          "Ice salve"
+        ]
+      },
+      {
+        "id": "freeze",
+        "movementDisabled": true,
+        "evasionPercent": 0,
+        "durationTurns": 1,
+        "cures": [
+          "Fire spell",
+          "Dantian cooling remedy"
+        ]
+      },
+      {
+        "id": "poison",
+        "qiRegenMultiplier": 0.5,
+        "durationTurns": 3,
+        "cures": [
+          "Swamp antidote",
+          "Shenmu wood spell"
+        ]
+      },
+      {
+        "id": "stun",
+        "mainActionLost": true,
+        "minorActionLost": true,
+        "durationTurns": 1,
+        "cures": [
+          "Golden Bell immunity",
+          "Law seal"
+        ]
+      },
+      {
+        "id": "bleeding",
+        "hpLossPerMovementMaxHpFraction": 0.03,
+        "durationTurns": 2,
+        "cures": [
+          "Herbal bandage",
+          "Golden needle acupuncture"
+        ]
+      },
+      {
+        "id": "qi-drain",
+        "currentQiFractionDrained": 0.1,
+        "instant": true,
+        "cures": [
+          "Qi energy pill",
+          "Dantian seal"
+        ]
+      }
+    ],
+    "source": {
+      "path": "20_COMBAT_SYSTEM.md",
+      "line": 27,
+      "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
+    },
+    "attack": {
+      "baseFactor": 0.15,
+      "weaponSoulBindingBonus": 0.2
+    },
+    "defense": {
+      "baseFactor": 0.05
+    },
+    "hitChance": {
+      "base": 0.7,
+      "realmAdvantagePerRank": 0.05,
+      "min": 0.1,
+      "max": 0.95
+    },
+    "critical": {
+      "base": 0.05,
+      "dexterityFactor": 0.005,
+      "multiplier": 1.5
+    },
+    "damage": {
+      "minimum": 1
+    }
+  },
+  "bestiary": {
+    "tiers": 9,
+    "recordCount": 344,
+    "dropFormula": "DropChance = BaseRate(Rarity) × TierModifier(BeastTier) - (CarcassDamage × 10%)",
+    "source": {
+      "path": "21_BESTIARY.md",
+      "line": 1,
+      "blobSha": "b5d8ca9292930699f62347c58c0a710cfa8702c3"
+    },
+    "dropFormulaSource": {
+      "path": "21_BESTIARY.md",
+      "line": 42,
+      "blobSha": "b5d8ca9292930699f62347c58c0a710cfa8702c3"
+    }
+  },
+  "formulaRegistry": [
+    {
+      "source": "13_SPIRITUAL_ROOT_SYSTEM.md",
+      "sourceBlobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae",
+      "startLine": 49,
+      "expression": "QiCap(realm, stage) = BaseQi(realm) × StageMultiplier(stage)"
+    },
+    {
+      "source": "13_SPIRITUAL_ROOT_SYSTEM.md",
+      "sourceBlobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae",
+      "startLine": 117,
+      "expression": "QiRegenPerHour = QiCap × 0.05 × RootRegenMultiplier × EnvironmentQiModifier × (1.0 - PillToxinPercent)"
+    },
+    {
+      "source": "13_SPIRITUAL_ROOT_SYSTEM.md",
+      "sourceBlobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae",
+      "startLine": 126,
+      "expression": "MeditationQiPerMinute = (QiCap × 0.02) × (1 + ComprehensionLevel × 0.10) × SpiritStoneGatheringBonus"
+    },
+    {
+      "source": "13_SPIRITUAL_ROOT_SYSTEM.md",
+      "sourceBlobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae",
+      "startLine": 211,
+      "expression": "StrikeDamage = (TargetMaxHP × 0.40) × StrikeIndexMultiplier × KarmaMultiplier - ActiveDefenses"
+    },
+    {
+      "source": "13_SPIRITUAL_ROOT_SYSTEM.md",
+      "sourceBlobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae",
+      "startLine": 221,
+      "expression": "KarmaBalance = MeritPoints - SinPoints"
+    },
+    {
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "sourceBlobSha": "c396bd331c14fd8ce3ff40ee546f5ee37f51c642",
+      "startLine": 46,
+      "expression": "BasePurity = 50%\nFlameQualityBonus = Mortal (0%) | Earth Qi (10%) | Natural Flame (20%) | Heavenly Flame (35%)\nCauldronGradeBonus = CauldronTier × 5%\nAlchemistSkillBonus = AlchemistLevel × 3%\nDifficultyPenalty = (PillTier - AlchemistTier) × 15%\nFinalPurity = Clamp(BasePurity + FlameQualityBonus + CauldronGradeBonus + AlchemistSkillBonus - DifficultyPenalty, 10%, 100%)"
+    },
+    {
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "sourceBlobSha": "c396bd331c14fd8ce3ff40ee546f5ee37f51c642",
+      "startLine": 85,
+      "expression": "BarrierHP = ArrayDiscBaseHP × (1 + ArrayMasterLevel × 0.15) × EnvironmentQiMultiplier"
+    },
+    {
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "sourceBlobSha": "c396bd331c14fd8ce3ff40ee546f5ee37f51c642",
+      "startLine": 92,
+      "expression": "WeaponDamage = BaseWeaponDamage × (1 + BlacksmithLevel × 0.08) × (1 + MetalTier × 0.10)\nSoulBindingBonus = +20% Damage saat digunakan pemilik sah."
+    },
+    {
+      "source": "14_CRAFTING_AND_PROFESSIONS_SYSTEM.md",
+      "sourceBlobSha": "c396bd331c14fd8ce3ff40ee546f5ee37f51c642",
+      "startLine": 100,
+      "expression": "TalismanSuccessChance = Clamp(60% + (TalismanMasterLevel - TalismanTier) × 10% + PaperQualityBonus, 10%, 95%)"
+    },
+    {
+      "source": "15_SPIRITUAL_HERB_FARMING_SYSTEM.md",
+      "sourceBlobSha": "2481f7011caa829157c5ea24e4c5920e0fcf62c1",
+      "startLine": 24,
+      "expression": "BaseGrowthDays = SeedStandardGrowthDays\nSoilMultiplier = Grade 1 (1.0) | Grade 2 (0.75) | Grade 3 (0.50) | Grade 4 (0.25)\nFertilizerDiscount = 0.30 (jika menggunakan Pupuk Qi Kayu) | 0.00 (tanpa pupuk)\nWoodRootBonus = 0.30 (jika kultivator memiliki Akar Spiritual Kayu Abadi) | 0.00\nActualGrowthDays = Max(1, BaseGrowthDays × SoilMultiplier × (1.0 - FertilizerDiscount - WoodRootBonus))"
+    },
+    {
+      "source": "15_SPIRITUAL_HERB_FARMING_SYSTEM.md",
+      "sourceBlobSha": "2481f7011caa829157c5ea24e4c5920e0fcf62c1",
+      "startLine": 39,
+      "expression": "HarvestYield = BaseYield (2–5 buah) × SoilYieldMultiplier × (1 + HerbalistSkillLevel × 0.10)"
+    },
+    {
+      "source": "16_BEAST_TAMING_SYSTEM.md",
+      "sourceBlobSha": "de70f4a2817dcd506a274bc3dcd5538b9131ce01",
+      "startLine": 15,
+      "expression": "===============================================================================\n                       ATURAN EMAS ANTI-CHEAT PENJINAKAN\n===============================================================================\n 1. NO INSTANT TAMING: Dilarang mengklaim beast liar langsung jinak tanpa roll.\n 2. BLOODLINE PURITY LIMIT: Beast tidak bisa berevolusi melompati 2 tier sekaligus.\n 3. TRIBULATION REQUIREMENT: Evolusi ke Tier 6+ WAJIB menghadapi Tribulasi Petir.\n 4. PERSISTENT LOYALTY & HUNGER: Status lapar dan kesetiaan tercatat berkelanjutan.\n 5. BEAST REGISTRY ORIGIN: Beast Tier 3+ wajib tercatat di Registry resmi AI GM.\n==============================================================================="
+    },
+    {
+      "source": "16_BEAST_TAMING_SYSTEM.md",
+      "sourceBlobSha": "de70f4a2817dcd506a274bc3dcd5538b9131ce01",
+      "startLine": 45,
+      "expression": "BaseChance = 30%\nRealmDiffBonus = (CharacterRealmIndex - BeastRealmIndex) × 10%\nHPDepletionBonus = (100% - BeastCurrentHP_Percent) × 0.40\nSealTierBonus = SealTier × 10%\nBaitBonus = 15% (jika menggunakan Pakan Herbal Kesukaan Beast)\nWildnessPenalty = BeastTier × 5%\nTamingSuccessChance = Clamp(BaseChance + RealmDiffBonus + HPDepletionBonus + SealTierBonus + BaitBonus - WildnessPenalty, 5%, 95%)"
+    },
+    {
+      "source": "16_BEAST_TAMING_SYSTEM.md",
+      "sourceBlobSha": "de70f4a2817dcd506a274bc3dcd5538b9131ce01",
+      "startLine": 57,
+      "expression": "RealmDiffBonus = (3 - 3) × 10% = 0%\nHPDepletionBonus = (100% - 30%) × 0.40 = 70% × 0.40 = +28%\nSealTierBonus = 3 × 10% = +30%\nBaitBonus = +15%\nWildnessPenalty = 3 × 5% = -15%\nTamingSuccessChance = 30% + 0% + 28% + 30% + 15% - 15% = 88%."
+    },
+    {
+      "source": "16_BEAST_TAMING_SYSTEM.md",
+      "sourceBlobSha": "de70f4a2817dcd506a274bc3dcd5538b9131ce01",
+      "startLine": 74,
+      "expression": "LoyaltyGainPerFeeding = 5 + (AlchemistPillQuality × 2)\nLoyaltyLossInBattleDefeat = 15 Points\nLoyaltyLossStarvationDay = 10 Points / hari"
+    },
+    {
+      "source": "16_BEAST_TAMING_SYSTEM.md",
+      "sourceBlobSha": "de70f4a2817dcd506a274bc3dcd5538b9131ce01",
+      "startLine": 104,
+      "expression": "BaseEvolutionChance = 40%\nBloodlinePurityBonus = (CurrentBloodlinePurity_Percent) × 0.30\nEvolutionPillQualityBonus = PillPurityGrade (Low: +5% | Mid: +15% | High: +25% | Perfect: +35%)\nElementalCatalystBonus = +15% (jika menggunakan material katalis Grade sesuai)\nTierJumpPenalty = (TargetTier - CurrentTier) × 25%\nFinalEvolutionChance = Clamp(BaseEvolutionChance + BloodlinePurityBonus + EvolutionPillQualityBonus + ElementalCatalystBonus - TierJumpPenalty, 5%, 90%)"
+    },
+    {
+      "source": "16_BEAST_TAMING_SYSTEM.md",
+      "sourceBlobSha": "de70f4a2817dcd506a274bc3dcd5538b9131ce01",
+      "startLine": 123,
+      "expression": "[Ular Rumput Hijau (Tier 1)]\n   ├── [Jalur Racun] ──> [Ular Belati Berbisa (Tier 2)] ──> [Python Bayangan Rawa (Tier 4)] ──> [Ular Sembilan Kepala Youming (Tier 6)]\n   └── [Jalur Naga]  ──> [Ular Tanduk Giok (Tier 2)]    ──> [Jiaolong Sisik Biru (Tier 4)]    ──> [Shenlong Langit Mengaum (Tier 7)]\n\n[Serigala Abu-Abu (Tier 1)]\n   ├── [Jalur Es]    ──> [Serigala Es Lembah (Tier 2)]  ──> [Serigala Es Bertaring Pedang (Tier 4)] ──> [Serigala Penelan Bulan Hanbing (Tier 6)]\n   └── [Jalur Angin] ──> [Serigala Angin Cepat (Tier 2)]──> [Serigala Sayap Badai (Tier 4)]       ──> [Serigala Badai Langit Canglong (Tier 6)]\n\n[Burung Pipit Gunung (Tier 1)]\n   ├── [Jalur Api]   ──> [Burung Api Lembah (Tier 2)]   ──> [Rajawali Sayap Magma (Tier 4)]   ──> [Burung Fenghuang Nirwana (Tier 7)]\n   └── [Jalur Petir] ──> [Elang Bulu Kilat (Tier 2)]    ──> [Elang Petir Tribulasi (Tier 4)]  ──> [Garuda Guntur Pemecah Awan (Tier 7)]\n\n[Kera Hutan Biasa (Tier 1)]\n   └── [Jalur Tubuh Besi] ──> [Kera Bertangan Batu (Tier 2)] ──> [Gorila Gunung Tinju Emas (Tier 4)] ──> [Kera Purba Penghancur Langit (Tier 7)]"
+    },
+    {
+      "source": "17_AIRSHIP_NAVIGATION_SYSTEM.md",
+      "sourceBlobSha": "ab75457146c452d28d93ebc499f2f3e07173436b",
+      "startLine": 22,
+      "expression": "BaseSpeed = Skiff (500 li/hari) | Freighter (1.000 li/hari) | Galleon (2.500 li/hari) | Battleship (4.000 li/hari)\nPilotSkillBonus = PilotTier × 10%\nRealm3QiDriveBonus = 100% (jika Pilot/Penumpang Realm 3+ menyuntikkan Qi Yuan)\nFinalAirshipSpeed = BaseSpeed × (1.0 + PilotSkillBonus + Realm3QiDriveBonus)"
+    },
+    {
+      "source": "17_AIRSHIP_NAVIGATION_SYSTEM.md",
+      "sourceBlobSha": "ab75457146c452d28d93ebc499f2f3e07173436b",
+      "startLine": 36,
+      "expression": "SpiritStoneCostPerHour = (AirshipTier × 2 LSS) / (1.0 + Realm3QiDriveEfficiencyBonus)"
+    },
+    {
+      "source": "18_ECONOMY_SYSTEM.md",
+      "sourceBlobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2",
+      "startLine": 13,
+      "expression": "===============================================================================\n                       ATURAN EMAS ANTI-CHEAT EKONOMI\n===============================================================================\n 1. NO ARBITRARY PRICE: Harga tidak boleh ditebak atau disepakati sepihak.\n 2. ITEM ORIGIN LOG REQUIRED: Barang Tier 3+ WAJIB memiliki Origin Log.\n 3. BARTER HARD CAP: Tawar-menawar dibatasi maksimal ±15% dari harga formula.\n 4. SCARCITY MODIFIER: Fluktuasi wilayah dibatasi multiplier 0,5× s/d 2,5×.\n 5. TIMESTAMPED TRANSACTION: Seluruh transaksi dicatat bertimestamp resmi.\n==============================================================================="
+    },
+    {
+      "source": "18_ECONOMY_SYSTEM.md",
+      "sourceBlobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2",
+      "startLine": 51,
+      "expression": "FinalBuyPrice = ItemBaseValue × DiscountModifier × RegionScarcityMultiplier"
+    },
+    {
+      "source": "18_ECONOMY_SYSTEM.md",
+      "sourceBlobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2",
+      "startLine": 62,
+      "expression": "DiscountModifier = 1.0 - 0.09 - 0.10 = 0.81\nFinalBuyPrice = 20 LSS × 0.81 × 1.5 = 24.3 LSS (Dibulatkan: 24 LSS + 3 JT)."
+    },
+    {
+      "source": "18_ECONOMY_SYSTEM.md",
+      "sourceBlobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2",
+      "startLine": 71,
+      "expression": "PlayerSellValue = ItemBaseValue × 0.50 × (1 + (BarterSkillLevel × 0.05))"
+    },
+    {
+      "source": "18_ECONOMY_SYSTEM.md",
+      "sourceBlobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2",
+      "startLine": 80,
+      "expression": "AuctionCommission = FinalBidAmount × (0.10 - (YouxiaRankBonus × 0.01))\nSellerPayout = FinalBidAmount - AuctionCommission"
+    },
+    {
+      "source": "18_ECONOMY_SYSTEM.md",
+      "sourceBlobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2",
+      "startLine": 126,
+      "expression": "[ITEM ORIGIN LOG]\n- Item Name: Pedang Besi Meteorit Grade 5\n- Origin Creator: Master Penempa Shendu (NPC ID: 24-01)\n- Timestamp: Year 15000, Month 3, Day 12\n- Extraction Location: Kawah Shendu, Chiyan Zhou\n- Verifier Stamp: Serikat Youxia Sanxiu Tianjing (Log #YX-88421)"
+    },
+    {
+      "source": "19_VITALITY_HUNGER_SYSTEM.md",
+      "sourceBlobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092",
+      "startLine": 13,
+      "expression": "===============================================================================\n                       ATURAN EMAS ANTI-CHEAT VITALITAS\n===============================================================================\n 1. FIXED HP FORMULA: Max HP dihitung AI GM lewat formula resmi.\n 2. LOGGED DAMAGE: Kerusakan raga dan healing dicatat bertimestamp resmi.\n 3. BIGU/FASTING SCALING: Ranah Xuantian Jing ke atas kebal kelaparan (Inedia).\n 4. PILL TOXINS ACCUMULATION: Pengonsumsian pil berlebih memicu racun Dantian.\n 5. MEDICAL RESTORATION: Pemulihan Dantian retak hanya lewat Tabib Suci/Alkemis.\n==============================================================================="
+    },
+    {
+      "source": "19_VITALITY_HUNGER_SYSTEM.md",
+      "sourceBlobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092",
+      "startLine": 31,
+      "expression": "MaxHP = RealmBaseQiCap × StageMultiplier × 0.40 × SpiritualRootHPMultiplier × (1 + BodyFortificationBonus)"
+    },
+    {
+      "source": "19_VITALITY_HUNGER_SYSTEM.md",
+      "sourceBlobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092",
+      "startLine": 66,
+      "expression": "HPRegenPerHour = MaxHP × 0.05 × RootRegenMultiplier × EnvironmentQiMultiplier"
+    },
+    {
+      "source": "19_VITALITY_HUNGER_SYSTEM.md",
+      "sourceBlobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092",
+      "startLine": 79,
+      "expression": "SatietyDropPerHour = 10% / FastingMultiplier(realm)"
+    },
+    {
+      "source": "19_VITALITY_HUNGER_SYSTEM.md",
+      "sourceBlobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092",
+      "startLine": 105,
+      "expression": "CurrentToxinPercent = Clamp(PreviousToxin + ConsumedPillToxin, 0%, 100%)"
+    },
+    {
+      "source": "20_COMBAT_SYSTEM.md",
+      "sourceBlobSha": "6395774f887c6292c49d68e72a322fdd701f67f2",
+      "startLine": 13,
+      "expression": "===============================================================================\n                       ATURAN EMAS ANTI-CHEAT PERTEMPURAN\n===============================================================================\n 1. STRICT TURN ORDER: Giliran bertindak ditentukan oleh Initiative Score.\n 2. ACTION LIMIT: 1 Giliran = 1 Aksi Utama + 1 Aksi Kecil + 1 Aksi Gerak.\n 3. NO NARRATIVE OVERPOWER: Deskripsi naratif tidak bisa mengubah hitungan damage.\n 4. AI GM ENFORCED DAMAGE: Semua damage dan status effect dihitung resmi AI GM.\n 5. LOGGED COMBAT: Seluruh log serangan dan sisa HP/Qi dicatat bertimestamp.\n==============================================================================="
+    },
+    {
+      "source": "20_COMBAT_SYSTEM.md",
+      "sourceBlobSha": "6395774f887c6292c49d68e72a322fdd701f67f2",
+      "startLine": 31,
+      "expression": "InitiativeScore = (RealmIndex × 100) + StageBonus + RootSpeedBonus + EquipmentSpeedBonus + Random(1–20)"
+    },
+    {
+      "source": "20_COMBAT_SYSTEM.md",
+      "sourceBlobSha": "6395774f887c6292c49d68e72a322fdd701f67f2",
+      "startLine": 57,
+      "expression": "AttackPower = CharacterQiCap × 0.15 × SpiritualRootAttackMultiplier × WeaponMultiplier × (1 + WeaponSoulBindingBonus)"
+    },
+    {
+      "source": "20_COMBAT_SYSTEM.md",
+      "sourceBlobSha": "6395774f887c6292c49d68e72a322fdd701f67f2",
+      "startLine": 74,
+      "expression": "PassiveDefense = CharacterQiCap × 0.05 × SpiritualRootDefenseMultiplier + ArmorDefenseRating"
+    },
+    {
+      "source": "20_COMBAT_SYSTEM.md",
+      "sourceBlobSha": "6395774f887c6292c49d68e72a322fdd701f67f2",
+      "startLine": 87,
+      "expression": "BaseHit = 70%\nRealmAdvantage = (AttackerRealmIndex - DefenderRealmIndex) × 5%\nFinalHitChance = Clamp(BaseHit + RealmAdvantage - DodgePenalty + AccuracyBonus, 10%, 95%)"
+    },
+    {
+      "source": "20_COMBAT_SYSTEM.md",
+      "sourceBlobSha": "6395774f887c6292c49d68e72a322fdd701f67f2",
+      "startLine": 97,
+      "expression": "CritChance = 5% + (AttackerDexterity × 0.5%) + WindMetalRootBonus (5%)\nIsCrit = 1.50 jika Dadu Crit Berhasil, sebaliknya 1.00\nFinalDamage = Max(1, ((AttackPower × SkillMultiplier) - PassiveDefense) × IsCrit)"
+    },
+    {
+      "source": "20_COMBAT_SYSTEM.md",
+      "sourceBlobSha": "6395774f887c6292c49d68e72a322fdd701f67f2",
+      "startLine": 105,
+      "expression": "AttackPower × SkillMultiplier = 5.250 × 1.5 = 7.875\nNet Damage = 7.875 - 1.250 = 6.625\nFinalDamage = 6.625 × 1.5 (Crit) = 9.937 HP Damage!"
+    }
+  ],
+  "sourceConflicts": [
+    {
+      "id": "root-attack-multipliers",
+      "severity": "high",
+      "status": "unresolved",
+      "affectedSystem": "combat.attackPower",
+      "summary": "Module 13 and module 20 publish different attack multipliers for Fire, Wind/Metal and Water/Ice roots.",
+      "values": [
+        {
+          "source": {
+            "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
+            "line": 89,
+            "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+          },
+          "values": {
+            "fire": 1.6,
+            "wind-metal": 1.4,
+            "water-ice": 1.1
+          }
+        },
+        {
+          "source": {
+            "path": "20_COMBAT_SYSTEM.md",
+            "line": 61,
+            "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
+          },
+          "values": {
+            "fire": 1.4,
+            "wind-metal": 1.25,
+            "water-ice": 1
+          }
+        }
+      ],
+      "runtimePolicy": "Combat formulas use the combat-specific table from module 20; keep the discrepancy visible and do not rewrite module 13."
+    },
+    {
+      "id": "earth-defense-multiplier",
+      "severity": "high",
+      "status": "unresolved",
+      "affectedSystem": "combat.passiveDefense",
+      "summary": "Module 13 lists Earth Root defense ×1.6; module 20 lists ×1.5.",
+      "values": [
+        {
+          "source": {
+            "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
+            "line": 101,
+            "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+          },
+          "value": 1.6
+        },
+        {
+          "source": {
+            "path": "20_COMBAT_SYSTEM.md",
+            "line": 78,
+            "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
+          },
+          "value": 1.5
+        }
+      ],
+      "runtimePolicy": "Combat formulas use module 20's combat-specific table; preserve module 13's root bonus separately."
+    },
+    {
+      "id": "wind-metal-critical-bonus",
+      "severity": "high",
+      "status": "unresolved",
+      "affectedSystem": "combat.criticalChance",
+      "summary": "Module 13 gives Wind/Metal +20% Critical Hit Chance; module 20 specifies +5%.",
+      "values": [
+        {
+          "source": {
+            "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
+            "line": 95,
+            "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+          },
+          "value": 0.2
+        },
+        {
+          "source": {
+            "path": "20_COMBAT_SYSTEM.md",
+            "line": 98,
+            "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
+          },
+          "value": 0.05
+        }
+      ],
+      "runtimePolicy": "Combat formula uses module 20's +5% combat-specific bonus; discrepancy remains explicit."
+    },
+    {
+      "id": "realm-nine-name",
+      "severity": "high",
+      "status": "unresolved",
+      "affectedSystem": "combat.initiative.realmIndex",
+      "summary": "Module 00 and module 13 define realm 9 as Hunyuan Jing and Fei Sheng as ascension after realm 9; module 20 describes realm 9 as Fei Sheng.",
+      "values": [
+        {
+          "source": {
+            "path": "00_CORE_RULES_AI_GM.md",
+            "line": 178,
+            "blobSha": "f340b9be97d54893dad3beb6c7c50718cbae19c8"
+          },
+          "value": "Hunyuan Jing"
+        },
+        {
+          "source": {
+            "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
+            "line": 29,
+            "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+          },
+          "value": "Hunyuan Jing; Fei Sheng is ascension after it"
+        },
+        {
+          "source": {
+            "path": "20_COMBAT_SYSTEM.md",
+            "line": 36,
+            "blobSha": "6395774f887c6292c49d68e72a322fdd701f67f2"
+          },
+          "value": "Fei Sheng"
+        }
+      ],
+      "runtimePolicy": "Realm index mapping uses the canonical nine-realm table in modules 00 and 13; Fei Sheng is not assigned a tenth realm."
+    },
+    {
+      "id": "vitality-reference-table",
+      "severity": "high",
+      "status": "unresolved",
+      "affectedSystem": "vitality.maxHp.lookup",
+      "summary": "The stage-middle HP reference table in module 19 lists Qi base values that conflict with the Qi-cap table in modules 00 and 13 (e.g. Lingquan 2,500 vs 150 at middle stage).",
+      "values": [
+        {
+          "source": {
+            "path": "00_CORE_RULES_AI_GM.md",
+            "line": 178,
+            "blobSha": "f340b9be97d54893dad3beb6c7c50718cbae19c8"
+          },
+          "value": "Lingquan middle QiCap = 150"
+        },
+        {
+          "source": {
+            "path": "19_VITALITY_HUNGER_SYSTEM.md",
+            "line": 53,
+            "blobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092"
+          },
+          "value": "Lingquan base Qi cap = 2,500"
+        }
+      ],
+      "runtimePolicy": "Do not use the module 19 HP lookup table. Calculate MaxHP using the explicit formula in module 19 and the realm/stage Qi table in modules 00/13."
+    },
+    {
+      "id": "pill-toxin-stacking",
+      "severity": "medium",
+      "status": "unresolved",
+      "affectedSystem": "vitality.passiveQiRegen",
+      "summary": "Module 13 applies a continuous (1 - PillToxinPercent) factor; module 19 separately states a -30% natural Qi regeneration effect above 30% toxin but does not specify whether it stacks or replaces the formula factor.",
+      "values": [
+        {
+          "source": {
+            "path": "13_SPIRITUAL_ROOT_SYSTEM.md",
+            "line": 117,
+            "blobSha": "fe2f6ee0eac9defcde66e6c17db9c822242d8fae"
+          },
+          "value": "multiply by (1 - PillToxinPercent)"
+        },
+        {
+          "source": {
+            "path": "19_VITALITY_HUNGER_SYSTEM.md",
+            "line": 109,
+            "blobSha": "54391dbd8f425bebecbb6a71d8c1fccfbc194092"
+          },
+          "value": "Qi regeneration -30% above 30% toxin"
+        }
+      ],
+      "runtimePolicy": "Keep the formula factor and threshold status separately observable; do not add a second -30% multiplier without an authoritative stacking rule."
+    },
+    {
+      "id": "economy-faction-affinity-discount",
+      "severity": "medium",
+      "status": "unresolved",
+      "affectedSystem": "economy.finalBuyPrice",
+      "summary": "The written discount equation multiplies FactionAffinityBonus by 0.05, but the worked example subtracts 0.10 for a stated +10% affinity bonus. Those inputs do not reconcile if +10% is represented as 0.10.",
+      "values": [
+        {
+          "source": {
+            "path": "18_ECONOMY_SYSTEM.md",
+            "line": 57,
+            "blobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2"
+          },
+          "value": "DiscountModifier = 1 - (BarterSkillLevel × 0.03) - (FactionAffinityBonus × 0.05)"
+        },
+        {
+          "source": {
+            "path": "18_ECONOMY_SYSTEM.md",
+            "line": 62,
+            "blobSha": "afaf9bf69f5274dea47bc1997ae48583f405fde2"
+          },
+          "value": "Worked example: +10% affinity contributes a 0.10 discount"
+        }
+      ],
+      "runtimePolicy": "Use the written equation with the raw numeric FactionAffinityBonus input; do not silently convert percentage representations. Resolve parameter semantics before exposing player-facing faction discounts."
+    }
+  ],
+  "runtimePolicy": {
+    "unresolvedConflictsMustBeExposed": true,
+    "neverInventMissingFormulaParameters": true,
+    "allFormulaResultsMustCarrySourceReference": true,
+    "canonicalSourceIsReadOnly": true
+  }
+}
