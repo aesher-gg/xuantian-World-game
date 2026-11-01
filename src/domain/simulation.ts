@@ -62,6 +62,7 @@ export function harvestHerb(snapshot: GameSnapshot): GameSnapshot {
   assertCanonicalRules()
   if (snapshot.herb.plantedAtMinute === null || snapshot.herb.growthMinutes < snapshot.herb.requiredMinutes) return snapshot
   const next = structuredClone(snapshot)
+  // Canon specifies a 2–5 base-yield range but no roll distribution; the starter plot uses the conservative minimum until seeded rolls are approved.
   const amount = harvestYield({
     baseYield: next.herb.baseYield,
     soilGrade: next.herb.soilGrade,
