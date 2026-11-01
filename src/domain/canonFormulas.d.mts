@@ -18,3 +18,8 @@ export function attackPower(input:{qiCap:number;rootAttackMultiplier:number;weap
 export function passiveDefense(input:{qiCap:number;rootDefenseMultiplier:number;armorDefenseRating:number}):number
 export function finalDamage(input:{attackPower:number;skillMultiplier:number;passiveDefense:number;isCrit:boolean}):number
 export function initiativeScore(input:{realmIndex:number;stageBonus:number;rootSpeedBonus:number;equipmentSpeedBonus:number;randomRoll:number}):number
+
+export function evolutionChance(input:{currentBloodlinePurityPercent:number;evolutionPillQualityBonus:number;hasMatchingElementalCatalyst:boolean;currentTier:number;targetTier:number}):number
+export function satietyDropPerHour(input:{fastingMultiplier:number}):number
+export function criticalChance(input:{attackerDexterity:number;windMetalRoot:boolean}):number
+export function beastDropChance(input:{baseRarityRate:number;tierModifier:number;carcassDamagePercent:number}):number
