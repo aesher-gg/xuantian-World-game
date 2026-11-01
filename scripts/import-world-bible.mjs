@@ -64,7 +64,7 @@ export function validateCatalog(catalog) {
   return { valid: errors.length === 0, errors, warnings, moduleCount: catalog.modules?.length ?? 0 }
 }
 async function getText(url) { const response = await fetch(url, { headers: { 'User-Agent': 'Xuantian-World-Importer/1.0' } }); if (!response.ok) throw new Error('HTTP ' + response.status + ' fetching ' + url); return response.text() }
-async function getJson(url) { const response = await fetch(url, { headers: { 'User-Agent': 'Xuantian-World-Importer/1.0', Accept: 'application/vnd.github+json' } }); if (!response.ok) throw new Error('HTTP ' + response.status + ' fetching ' + url); return response.json() }
+async function getJson(url) { const headers = { 'User-Agent': 'Xuantian-World-Importer/1.0', Accept: 'application/vnd.github+json' }; if (process.env.GITHUB_TOKEN) headers.Authorization = 'Bearer ' + process.env.GITHUB_TOKEN; const response = await fetch(url, { headers }); if (!response.ok) throw new Error('HTTP ' + response.status + ' fetching ' + url); return response.json() }
 async function parallel(items, limit, fn) { const results = new Array(items.length); let cursor = 0; await Promise.all(Array.from({ length: Math.min(limit, items.length) }, async () => { while (cursor < items.length) { const i = cursor++; results[i] = await fn(items[i], i) } })); return results }
 
 const normalizeHeader = (value) => value.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\*\*/g, '').replace(/\*/g, '').trim()
