@@ -68,7 +68,8 @@ async function parallel(items, limit, fn) { const results = new Array(items.leng
 export async function runImport() {
   const base = 'https://api.github.com/repos/' + SOURCE_REPOSITORY
   const index = await getText('https://raw.githubusercontent.com/' + SOURCE_REPOSITORY + '/' + SOURCE_BRANCH + '/INDEX.md')
-  const tree = await getJson(base + '/git/trees/' + SOURCE_BRANCH + '?recursive=1')
+  const commit = await getJson(base + '/commits/' + SOURCE_BRANCH)
+  const tree = await getJson(base + '/git/trees/' + commit.commit.tree.sha + '?recursive=1')
   const blobs = new Map((tree.tree ?? []).filter((item) => item.type === 'blob').map((item) => [item.path, item.sha]))
   const entries = parseIndex(index)
   if (!entries.some((item) => item.path === 'players.md')) entries.push({ id: 'hub', moduleLabel: 'Hub', path: 'players.md', description: 'Read-only starter character catalog' })
@@ -82,12 +83,13 @@ export async function runImport() {
   })
   const catalog = {
     schemaVersion: 1,
-    source: { repository: SOURCE_REPOSITORY, branch: SOURCE_BRANCH, commitSha: tree.sha, treeSha: tree.sha, sourceIndexBlobSha: blobs.get('INDEX.md'), policy: 'read-only', importedAt: new Date().toISOString() },
+    source: { repository: SOURCE_REPOSITORY, branch: SOURCE_BRANCH, commitSha: commit.sha, treeSha: tree.sha, sourceIndexBlobSha: blobs.get('INDEX.md'), policy: 'read-only', importedAt: new Date().toISOString() },
     summary: { indexedModuleCount: entries.length, importedModuleCount: imported.length, regionModules: imported.filter((x) => /^0[2-9]_.*_ZHOU\.md$|^1[01]_.*_ZHOU\.md$/.test(x.entry.path)).map((x) => ({ id: x.entry.id, path: x.entry.path, title: x.parsed.title })), systemModules: imported.filter((x) => /SYSTEM|COMBAT|BESTIARY|EVENT|PROFESSION|CUSTOM|ECONOMY|VITALITY|AIRSHIP|CRAFTING/i.test(x.entry.path)).map((x) => ({ id: x.entry.id, path: x.entry.path, title: x.parsed.title })) },
     modules: imported.map((x) => ({ id: x.entry.id, moduleLabel: x.entry.moduleLabel, path: x.entry.path, description: x.entry.description, title: x.parsed.title, blobSha: x.blobSha, lineCount: x.parsed.lineCount, headings: x.parsed.headings, sections: x.parsed.sections, tables: x.parsed.tables, codeBlocks: x.parsed.codeBlocks, formulaBlocks: x.parsed.formulaBlocks, references: x.parsed.references }))
   }
   const validation = validateCatalog(catalog)
   await mkdir(SNAPSHOTS, { recursive: true }); await mkdir(GENERATED, { recursive: true })
+  await writeFile(resolve(SNAPSHOTS, 'INDEX.md'), index, 'utf8')
   for (const item of imported) { const target = resolve(SNAPSHOTS, item.entry.path); await mkdir(dirname(target), { recursive: true }); await writeFile(target, item.markdown, 'utf8') }
   await writeFile(resolve(GENERATED, 'catalog.json'), JSON.stringify(catalog, null, 2) + '\n', 'utf8')
   await writeFile(resolve(GENERATED, 'validation-report.json'), JSON.stringify({ ...validation, source: catalog.source, checkedAt: new Date().toISOString() }, null, 2) + '\n', 'utf8')
