@@ -3,7 +3,9 @@
 - `snapshots/`: immutable Markdown copies fetched from the canonical read-only source.
 - `generated/catalog.json`: parsed, provenance-rich JSON catalog for game systems.
 - `generated/validation-report.json`: machine-readable validation output.
-- `generated/domain-catalog.json`: operational 10-region/9-realm catalog, 200 herb rows, 344 beast records and formula registry.
+- `generated/domain-catalog.json`: normalized 10-region/9-realm catalog, 200 herb rows, 344 beast records and formula registry.
+- `generated/simulation-rules.json`: source-traced runtime constants, formulas, profession rules and explicit unresolved source conflicts.
+- `scripts/validate-operational-data.mjs`: verifies source commit/SHA consistency across all imported and derived JSON before build.
 - `generated/DOMAIN_DATA_README.md`: coverage and known source discrepancy notes.
 - `public/data/world-bible/`: runtime copies of the validated catalog and domain catalog.
 - `schema/catalog.schema.json`: versioned JSON contract.
